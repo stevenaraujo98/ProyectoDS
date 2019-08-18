@@ -24,7 +24,4 @@ public class JefeBodegaController {
         this.colaRepartidores = bodega.getRepartidores();
     }
     
-    public void crearRuta(){
-        
-    }
 }
