@@ -13,5 +13,30 @@ public class DetalleVenta {
     private int idDtVnt;
     private int cantidadDtVnt;
     private double precioVendidoDtVnt;
+
+    public int getIdDtVnt() {
+        return idDtVnt;
+    }
+
+    public void setIdDtVnt(int idDtVnt) {
+        this.idDtVnt = idDtVnt;
+    }
+
+    public int getCantidadDtVnt() {
+        return cantidadDtVnt;
+    }
+
+    public void setCantidadDtVnt(int cantidadDtVnt) {
+        this.cantidadDtVnt = cantidadDtVnt;
+    }
+
+    public double getPrecioVendidoDtVnt() {
+        return precioVendidoDtVnt;
+    }
+
+    public void setPrecioVendidoDtVnt(double precioVendidoDtVnt) {
+        this.precioVendidoDtVnt = precioVendidoDtVnt;
+    }
+    
     
 }
