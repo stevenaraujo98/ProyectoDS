@@ -7,7 +7,6 @@ package vista;
 
 import controlador.ConexionDB;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -17,17 +16,23 @@ import javafx.stage.Stage;
 public class Main extends Application{
     @Override
     public void init(){
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root");
+        String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
     }
     
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(null)); 
-        stage.show();
+        LoginView login = new LoginView();
+        login.showLogin();
     }
     
     public static void main(String[] args) {
         launch();
+    }
+    
+    @Override
+    public void stop(){
+        ConexionDB.getInstance().close();
     }
     
 }
