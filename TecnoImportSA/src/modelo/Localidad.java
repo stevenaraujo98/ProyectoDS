@@ -5,17 +5,19 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author JordyVillao
+ * @author 
  */
 public abstract class Localidad {
     private int idLcld;
     private String nombreLcld;
     private String direccionLcld;
     private String Telefono;
-    //private Admin admin;
-    //private Inventario inventario;
+    private Admin admin;
+    private ArrayList<InventarioDetalle> inventario;
 
     public Localidad(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
         this.idLcld = idLcld;
