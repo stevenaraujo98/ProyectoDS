@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * @author 
  */
 public abstract class Localidad {
-    private int idLcld;
-    private String nombreLcld;
-    private String direccionLcld;
-    private String Telefono;
-    private Admin admin;
-    private ArrayList<InventarioDetalle> inventario;
-
+    protected int idLcld;
+    protected String nombreLcld;
+    protected String direccionLcld;
+    protected String Telefono;
+    protected Admin admin;
+    protected ArrayList<InventarioDetalle> inventario;
+    protected ArrayList<Empleado> empleados;
+            
     public Localidad(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
         this.idLcld = idLcld;
         this.nombreLcld = nombreLcld;
@@ -56,6 +57,14 @@ public abstract class Localidad {
 
     public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
+    }
+    
+    public Admin getAdmin(){
+        return this.admin;
+    }
+    
+    public void setAdmin(Admin a){
+        this.admin = a;
     }
     
     
