@@ -7,7 +7,7 @@ package modelo;
 
 /**
  *
- * @author JordyVillao
+ * @author 
  */
 public class Matriz extends Localidad{
     
