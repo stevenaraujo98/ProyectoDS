@@ -7,7 +7,9 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import modelo.Admin;
 import modelo.Usuario;
+import vista.AdminView;
 import vista.LoginView;
 
 
@@ -25,6 +27,10 @@ public class LoginController implements EventHandler<ActionEvent>{
         if(usuario != null){
             System.out.println("Hola " + usuario.getNombres() + " " + usuario.getClass());
             login.close();
+            if(usuario instanceof Admin){
+                AdminView admin = new AdminView((Admin)usuario);
+                admin.show();
+            }
         }else
             login.showMensajeError();
     }

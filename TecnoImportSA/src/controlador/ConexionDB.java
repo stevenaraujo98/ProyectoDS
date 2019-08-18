@@ -59,7 +59,7 @@ public class ConexionDB {
      * @return - True si se logró crear la conexión, false en caso contrario
      */
     public boolean connect(String db, String user, String pass, String query){
-        return connect("localhost", 3306, db, user, pass, query);
+        return connect("192.168.99.100", 32769, db, user, pass, query);
     }
     
     /**
@@ -76,6 +76,7 @@ public class ConexionDB {
         try { 
             URI uri = new URI(SCHEME, null, host, port, "/"+db, query, null);
             Class.forName("com.mysql.cj.jdbc.Driver");
+            
             connection = DriverManager.getConnection(uri.toString(), user, pass);
             return true;
         } catch (ClassNotFoundException | SQLException | URISyntaxException ex) {
