@@ -7,7 +7,7 @@ package modelo;
 
 /**
  *
- * @author JordyVillao
+ * @author 
  */
 public class Sucursal extends Localidad {
     

@@ -5,13 +5,15 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author JordyVillao
+ * @author 
  */
 public class Bodega extends Localidad{
-    //private ArrayList<Repartidor> repartidores;
-    //private JefeBodega jefeBodega;
+    private ArrayList<Repartidor> repartidores;
+    private JefeBodega jefeBodega;
 
     public Bodega(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
         super(idLcld, nombreLcld, direccionLcld, Telefono);

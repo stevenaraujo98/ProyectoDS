@@ -7,13 +7,11 @@ package modelo;
 
 /**
  *
- * 
+ * @author JordyVillao
  */
-public class JefeBodega extends Usuario{
-    
-    public JefeBodega(int id, String nombreUsuario, String clave, Empleado emp) {
-        super(id, nombreUsuario, clave, emp);
-    }
-    
+public class DetalleVenta {
+    private int idDtVnt;
+    private int cantidadDtVnt;
+    private double precioVendidoDtVnt;
     
 }
