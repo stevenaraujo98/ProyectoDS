@@ -12,12 +12,27 @@ import java.util.ArrayList;
  * @author 
  */
 public class Bodega extends Localidad{
-    private ArrayList<Repartidor> repartidores;
     private JefeBodega jefeBodega;
 
     public Bodega(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
         super(idLcld, nombreLcld, direccionLcld, Telefono);
     }
     
+    public JefeBodega getJefeBodega(){
+        return this.jefeBodega;
+    }
     
+    public void setJefeBodega(JefeBodega j){
+        this.jefeBodega = j;
+    }
+    
+    public ArrayList<Repartidor> getRepartidores(){
+        ArrayList<Repartidor> repartidores = new ArrayList<>();
+        for(Empleado e: empleados){
+            if(e instanceof Repartidor){
+                repartidores.add((Repartidor)e);
+            }
+        }
+        return repartidores;
+    }    
 }
