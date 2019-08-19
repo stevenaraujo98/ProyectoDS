@@ -8,8 +8,11 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.Admin;
+import modelo.Bodega;
+import modelo.JefeBodega;
 import modelo.Usuario;
 import vista.AdminView;
+import vista.JefeBodegaView;
 import vista.LoginView;
 
 
@@ -30,6 +33,11 @@ public class LoginController implements EventHandler<ActionEvent>{
             if(usuario instanceof Admin){
                 AdminView admin = new AdminView((Admin)usuario);
                 admin.show();
+            }else if(usuario instanceof JefeBodega){
+                Bodega b = new Bodega(1,"Bodega1", "prosperina","2222333");
+                b.setJefeBodega((JefeBodega)usuario);
+                JefeBodegaView jefebv = new JefeBodegaView(b);
+                jefebv.show();
             }
         }else
             login.showMensajeError();

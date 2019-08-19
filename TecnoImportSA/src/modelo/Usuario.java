@@ -18,9 +18,9 @@ import java.util.logging.Logger;
  */
 public class Usuario extends Empleado {
     
-    private int id;
-    private String nombreUsuario;
-    private String clave;    
+    protected int id;
+    protected String nombreUsuario;
+    protected String clave;    
 
     public Usuario(String nombreUsuario, String clave, Empleado emp) {
         super(emp.dni, emp.nombres, emp.apellidos, 

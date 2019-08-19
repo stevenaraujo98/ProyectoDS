@@ -38,7 +38,7 @@ public class JefeBodegaView extends BaseView{
             switch(this.getMenu().getItemSelected()){
                 case 0:
                     this.setTitle("Envios");
-                    this.setCenter(new Label("Envios")); 
+                    this.setCenter(new InfoEntregaView()); 
                     break;
                 case 1:
                     this.setTitle("Rutas");

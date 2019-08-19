@@ -29,7 +29,6 @@ public class InfoEntregaView extends BorderPane{
     private TextField buscar;
     private Button nuevo;
     private Button editar;
-    private Button eliminar;
     
     public InfoEntregaView(){
         super();
@@ -45,7 +44,7 @@ public class InfoEntregaView extends BorderPane{
         this.setTop(new VBox(new Label("Buscar:"), buscar));
         this.setCenter(table);
         this.setRight(new VBox(nuevo, editar));
-        
+        //fillTable();
     }
     
     

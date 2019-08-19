@@ -67,5 +67,8 @@ public abstract class Localidad {
         this.admin = a;
     }
     
+    public String toString(){
+        return this.nombreLcld;
+    }
     
 }

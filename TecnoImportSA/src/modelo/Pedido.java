@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
  * @author
  */
 public abstract class Pedido {
-    private int idPdo;
-    private LocalDateTime fechaPdo;
+    protected int idPdo;
+    protected LocalDateTime fechaPdo;
 
     public Pedido(int idPdo, LocalDateTime fechaPdo) {
         this.idPdo = idPdo;

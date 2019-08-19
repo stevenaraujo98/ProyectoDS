@@ -20,5 +20,25 @@ public class PedidoAbastecimiento extends Pedido{
     public PedidoAbastecimiento(int idPdo, LocalDateTime fechaPdo) {
         super(idPdo, fechaPdo);
     }
+
+    public Localidad getLocalPdoAbs() {
+        return localPdoAbs;
+    }
+
+    public void setLocalPdoAbs(Localidad localPdoAbs) {
+        this.localPdoAbs = localPdoAbs;
+    }
+
+    public ArrayList<InventarioDetalle> getProductosPdoAbs() {
+        return productosPdoAbs;
+    }
+
+    public void setProductosPdoAbs(ArrayList<InventarioDetalle> productosPdoAbs) {
+        this.productosPdoAbs = productosPdoAbs;
+    }
+    
+    public String toString(){
+        return this.fechaPdo.toString() + "-" + this.localPdoAbs;
+    }
     
 }
