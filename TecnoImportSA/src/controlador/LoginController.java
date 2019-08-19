@@ -11,9 +11,11 @@ import modelo.Admin;
 import modelo.Bodega;
 import modelo.JefeBodega;
 import modelo.Usuario;
+import modelo.Vendedor;
 import vista.AdminView;
 import vista.JefeBodegaView;
 import vista.LoginView;
+import vista.VendedorView;
 
 
 public class LoginController implements EventHandler<ActionEvent>{
@@ -38,6 +40,9 @@ public class LoginController implements EventHandler<ActionEvent>{
                 b.setJefeBodega((JefeBodega)usuario);
                 JefeBodegaView jefebv = new JefeBodegaView(b);
                 jefebv.show();
+            }else if(usuario instanceof Vendedor){
+                VendedorView v = new VendedorView((Vendedor)usuario);
+                v.show();
             }
         }else
             login.showMensajeError();

@@ -43,6 +43,11 @@ public class Categoria {
     public void setDescripcionCat(String descripcionCat) {
         this.descripcionCat = descripcionCat;
     }
+
+    @Override
+    public String toString() {
+        return this.nombreCat;
+    }
     
     
 }
