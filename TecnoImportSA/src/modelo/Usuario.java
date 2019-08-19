@@ -85,9 +85,9 @@ public class Usuario extends Empleado {
             case 2:
                 return new Gerente(id, user, pass, e);
             case 3:
-                return new JefeBodega(id, user, pass, e);
-            case 4:
                 return new Vendedor(id, user, pass, e);
+            case 4:
+                return new JefeBodega(id, user, pass, e);
             default:
                 return null;
         }

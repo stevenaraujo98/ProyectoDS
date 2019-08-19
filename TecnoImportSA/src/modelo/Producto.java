@@ -13,18 +13,16 @@ public class Producto {
     private int idPrdct;
     private String nombrePrdct;
     private String descripcionPrdct;
-    private String garantiaPrdct;
     private double precioActualPrdct;
+    private Categoria categoria;
 
-    public Producto(int idPrdct, String nombrePrdct, String descripcionPrdct, String garantiaPrdct, double precioActualPrdct) {
+    public Producto(int idPrdct, String nombrePrdct, String descripcionPrdct, double precioActualPrdct, Categoria c) {
         this.idPrdct = idPrdct;
         this.nombrePrdct = nombrePrdct;
         this.descripcionPrdct = descripcionPrdct;
-        this.garantiaPrdct = garantiaPrdct;
         this.precioActualPrdct = precioActualPrdct;
+        this.categoria = c;
     }
-
-    
     
     public int getIdPrdct() {
         return idPrdct;
@@ -50,14 +48,6 @@ public class Producto {
         this.descripcionPrdct = descripcionPrdct;
     }
 
-    public String getGarantiaPrdct() {
-        return garantiaPrdct;
-    }
-
-    public void setGarantiaPrdct(String garantiaPrdct) {
-        this.garantiaPrdct = garantiaPrdct;
-    }
-
     public double getPrecioActualPrdct() {
         return precioActualPrdct;
     }
@@ -65,7 +55,18 @@ public class Producto {
     public void setPrecioActualPrdct(double precioActualPrdct) {
         this.precioActualPrdct = precioActualPrdct;
     }
-    
-    
-    
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "idPrdct=" + idPrdct + ", nombrePrdct=" + nombrePrdct + ", descripcionPrdct=" + descripcionPrdct + ", precioActualPrdct=" + precioActualPrdct + ", categoria=" + categoria + '}';
+    }
+        
 }
