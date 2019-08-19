@@ -56,7 +56,7 @@ insert into Usuarios (username, userpass) values('jordi', aes_encrypt("jefeb1", 
 
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
 values("0952214550", "Jordi", "Villao", "0934905040", 440, 4, 3, "direccion1", "jvillao@espol.edu.ec");
-insert into Usuarios (username, userpass) values('saraujo', aes_encrypt("vededor1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
+insert into Usuarios (username, userpass) values('saraujo', aes_encrypt("vendedor1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
 values("0942230367", "Steven", "Araujo Moran", "0975431414", 440, 3, 3, "direccion2", "saraujo@espol.edu.ec");
 
@@ -90,30 +90,30 @@ insert into Tipo_pago(tipo) values("PayPal");
 
 ###################################### Nuevos datos agregados ################################################
 
-insert into localarticulo(cantidad,id_local,id_articulo) values(30, 1, 4);
-insert into localarticulo(cantidad,id_local,id_articulo) values(20, 1, 1);
-insert into localarticulo(cantidad,id_local,id_articulo) values(10, 1, 10);
-insert into localarticulo(cantidad,id_local,id_articulo) values(30, 1, 13);
-insert into localarticulo(cantidad,id_local,id_articulo) values(18, 2, 4);
-insert into localarticulo(cantidad,id_local,id_articulo) values(15, 2, 5);
-insert into localarticulo(cantidad,id_local,id_articulo) values(10, 2, 9);
-insert into localarticulo(cantidad,id_local,id_articulo) values(12, 2, 3);
-insert into localarticulo(cantidad,id_local,id_articulo) values(3, 2, 10);
-insert into localarticulo(cantidad,id_local,id_articulo) values(30, 3, 12);
-insert into localarticulo(cantidad,id_local,id_articulo) values(20, 3, 1);
-insert into localarticulo(cantidad,id_local,id_articulo) values(10, 3, 8);
-insert into localarticulo(cantidad,id_local,id_articulo) values(12, 3, 3);
-insert into localarticulo(cantidad,id_local,id_articulo) values(3, 3, 2);
-insert into localarticulo(cantidad,id_local,id_articulo) values(3, 3, 6);
-insert into localarticulo(cantidad,id_local,id_articulo) values(35, 1, 6);
-insert into localarticulo(cantidad,id_local,id_articulo) values(20, 1, 7);
-insert into localarticulo(cantidad,id_local,id_articulo) values(10, 1, 12);
-insert into localarticulo(cantidad,id_local,id_articulo) values(30, 1, 5);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 1, 4);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(20, 1, 1);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 1, 10);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 1, 12);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(18, 2, 4);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(15, 2, 5);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 2, 9);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 2, 3);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 2, 10);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 3, 12);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(20, 3, 1);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 3, 8);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 3, 3);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 3, 2);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 3, 6);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(35, 1, 6);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(20, 1, 7);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 1, 12);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 1, 5);
 
 DELIMITER //
 CREATE PROCEDURE productosPorNombre (nombre varchar(50))
 	begin
-		select a.id_articulo, a.nombre, a.descripcion, a.precio, c.id_categoria, c.nombre, c.descripcion from articulos a, categorias c
+		select a.id_articulo, a.nombre, a.descripcion, a.precio, c.id_categoria, c.nombre, c.descripcion from Articulos a, Categorias c
         where a.nombre = nombre and c.id_categoria = a.categoria and a.eliminado = false;
 	end //
 DELIMITER ;
@@ -121,16 +121,16 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE updateStock (id_prod integer, id_local integer, cant integer)
 	begin
-		update localarticulo
-        set localarticulo.cantidad = cant
-        where localarticulo.id_articulo = id_prod and localarticulo.id_local = id_local;
+		update LocalArticulo
+        set LocalArticulo.cantidad = cant
+        where LocalArticulo.id_articulo = id_prod and LocalArticulo.id_local = id_local;
 	end //
 DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addProductoLocal (id_prod integer, idLocal integer, cant integer)
 	begin
-		insert into localarticulo(cantidad,id_local,id_articulo)values(cant, idLocal, id_prod);
+		insert into LocalArticulo(cantidad,id_local,id_articulo)values(cant, idLocal, id_prod);
 	end //
 DELIMITER ;
 
@@ -138,31 +138,21 @@ call updateStock(1, 1, 50);
 call addProductoLocal(11, 1, 25);
 
 
-drop procedure productosPorNombre;
-call productosPorNombre("Xiaomi Redmi Note 7");
-
-select locales.nombre, articulos.nombre, localarticulo.cantidad, articulos.precio, categorias.nombre from locales, articulos, localarticulo, categorias
-where articulos.id_articulo = localarticulo.id_articulo and locales.id_local = localarticulo.id_local and categorias.id_categoria = articulos.categoria
-order by locales.id_local;
-
-select e.cedula,e.nombres,e.apellidos,e.telefono,e.salario,t.nombre
-from empleados e, tipo_empleado t where e.tipo_empleado = t.id_tipo;
-
 
 ##################################################################################################################
 
-alter table empleados
+alter table Empleados
 add column id_local INTEGER NOT NULL DEFAULT(1);
 
-update empleados
+update Empleados
 set id_local = 2
 where cedula = "0942230367";
 
-update empleados
+update Empleados
 set id_local = 3
 where cedula = "0952214550";
 
-alter table empleados
+alter table Empleados
 add constraint fk_empleadoLocal
 foreign key (id_local)references Locales(id_local);
 
@@ -172,7 +162,7 @@ drop procedure empleadoByUserID;
 DELIMITER //
 CREATE procedure empleadoByID(in id varchar(15))
 	begin
-		select cedula, nombres, apellidos, direccion, email, telefono, salario, tipo_empelado, id_local from empleados
+		select cedula, nombres, apellidos, direccion, email, telefono, salario, tipo_empelado, id_local from Empleados
         where cedula = id and eliminado = false;
 	end //
 DELIMITER ;
@@ -180,22 +170,22 @@ DELIMITER ;
 DELIMITER //
 CREATE procedure empleadoByUserID(in user_id integer)
 	begin
-		select cedula, nombres, apellidos, direccion, email, telefono, salario, tipo_empleado, id_local from empleados
+		select cedula, nombres, apellidos, direccion, email, telefono, salario, tipo_empleado, id_local from Empleados
         where id_usuario = user_id and eliminado = false;
 	end //
 DELIMITER ;
 
-alter table repartidores
+alter table Repartidores
 add column id_local INTEGER NOT NULL DEFAULT(3);
 
-alter table repartidores
+alter table Repartidores
 add constraint fk_repartidorLocal
 foreign key (id_local)references Locales(id_local);
 
 DELIMITER //
 CREATE procedure localByID(in id varchar(15))
 	begin
-		select l.nombre, l.direccion, e.nombres, e.apellidos, t.nombre from locales l, empleados e, tipo_local t
+		select l.nombre, l.direccion, e.nombres, e.apellidos, t.nombre from Locales l, Empleados e, Tipo_local t
         where l.id_local = id and e.id_local = l.id_local and l.tipo_local = t.id_tipo;
 	end //
 DELIMITER ;
@@ -204,7 +194,7 @@ call localByID(3);
 call empleadoByUserID(3);
 call login("saraujo", "vendedor1");
 
-update articulos
+update Articulos
 set categoria = 6
 where id_articulo = 7;
 
@@ -212,11 +202,22 @@ DELIMITER //
 CREATE procedure buscarProductos(in idLocal integer, nombre varchar(50), descr varchar(100), idCat integer)
 
 		select T.id_articulo, T.nombre, T.descripcion, T.precio, T.cantidad, c.id_categoria, c.nombre, c.descripcion, tl.nombre
-        from categorias c, tipo_local tl, 
-			(select a.id_articulo, a.nombre, a.descripcion, a.precio, a.categoria, la.cantidad, l.tipo_local from articulos a, localarticulo la, locales l
+        from Categorias c, Tipo_local tl, 
+			(select a.id_articulo, a.nombre, a.descripcion, a.precio, a.categoria, la.cantidad, l.tipo_local from Articulos a, LocalArticulo la, Locales l
 			where a.id_articulo = la.id_articulo and l.id_local = la.id_local and (la.id_local = idLocal or l.tipo_local = 3)) as T
             where T.categoria = c.id_categoria and T.tipo_local = tl.id_tipo and (T.categoria = idCat or INSTR(T.nombre,nombre)>0 or INSTR(T.descripcion,descr)>0);
 	end //
 DELIMITER ;
 drop procedure buscarProductos;
 call buscarProductos(1, "null", "pulgadas", 0);
+
+
+DELIMITER //
+CREATE procedure buscarRutas(id varchar(10))
+		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
+        from Envios e, Repartidores r, Observaciones o
+        where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs;
+	end //
+DELIMITER ;
+
+call buscarRutas;

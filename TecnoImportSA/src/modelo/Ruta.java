@@ -67,4 +67,7 @@ public class Ruta {
         this.detallesRta = detallesRta;
     }
     
+    public String toString(){
+        return this.destinoRta;
+    }
 }

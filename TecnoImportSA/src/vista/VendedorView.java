@@ -102,7 +102,7 @@ public class VendedorView extends BaseView{
     }
     
     private void llenarCombo(ComboBox<Categoria> categorias){
-        String query = "select * from categorias";
+        String query = "select * from Categorias";
         try {
             ResultSet result = ConexionDB.getInstance().getStatement().executeQuery(query);
             if(result != null){
