@@ -7,7 +7,7 @@ package vista.basescreen;
 
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -36,8 +36,7 @@ public class InfoEntregaView extends BorderPane{
         table = new TableView();
         buscar = new TextField();
         nuevo = new Button("Nuevo");
-        editar = new Button("Editar");
-        eliminar  = new Button("Eliminar seleccionados");
+        editar = new Button("Cambiar estado");
         init();
     }
     
@@ -45,7 +44,7 @@ public class InfoEntregaView extends BorderPane{
         buscar.setPromptText("Buscar");
         this.setTop(new VBox(new Label("Buscar:"), buscar));
         this.setCenter(table);
-        this.setRight(new VBox(nuevo, eliminar));
+        this.setRight(new VBox(nuevo, editar));
         
     }
     
@@ -64,7 +63,7 @@ public class InfoEntregaView extends BorderPane{
         id.setCellValueFactory(new PropertyValueFactory<Envio,String>("idEnv"));
         fecha0.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaRegistroEnv"));
         fecha1.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaEntregaEnv"));
-        pedido.setCellValueFactory(new PropertyValueFactory<Envio,String>("pedidoEnv"));
+        pedido.setCellValueFactory(new PropertyValueFactory<Envio,String>("pedidoStrEnv"));
         ruta.setCellValueFactory(new PropertyValueFactory<Envio,String>("rutaEnv"));
         repartidor.setCellValueFactory(new PropertyValueFactory<Envio,String>("repartidorEnv"));
         observaciones.setCellValueFactory(new PropertyValueFactory<Envio,String>("observacionesEnv"));
@@ -73,16 +72,28 @@ public class InfoEntregaView extends BorderPane{
     }
     
     public void setActionNuevo(){
+        nuevo.setOnAction(value -> {
+            //crea un nuevo formEntregaView
+        });
         
     }
     
     public void setActionEditar(){
+        editar.setOnAction(value -> {
+            if(table.getSelectionModel().getSelectedItem() != null ){
+                Envio e = table.getSelectionModel().getSelectedItem();
+                //e.setEstadoEnv();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Error!!!");
+                alert.setTitle("Error"); 
+                alert.setContentText("No ha seleccionado un envio");
+                alert.show();
+            }
+        });
         
     }
     
-    public void setActionEliminar(){
-        
-    }
     
     public void setOnKeyPressedBuscar(){
         buscar.setOnKeyPressed(kEvent -> {

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,9 +33,9 @@ public class Envio {
     public Pedido getPedidoEnv() {
         return pedidoEnv;
     }
-
-    public void setPedidoEnv(Pedido pedidoEnv) {
-        this.pedidoEnv = pedidoEnv;
+    
+    public void setPedidoEnv(Pedido pedido){
+        this.pedidoEnv = pedido; 
     }
 
     public LocalDateTime getFechaRegistroEnv() {

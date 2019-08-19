@@ -5,12 +5,17 @@
  */
 package vista.basescreen;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import modelo.Estado;
 import modelo.Pedido;
@@ -35,13 +40,15 @@ public class FormEntregaView {
     public FormEntregaView() {
         this.root = new GridPane();
         this.fechaEntrega = new DatePicker();
-        this.estado = new ComboBox();
+        this.estado = new ComboBox<>();
         this.ruta = new ComboBox();
         this.repartidor = new ComboBox();
         this.pedido = new ComboBox();
         this.observaciones = new TextArea();
         this.guardar = new Button("Guardar");
         init();
+        setActionGuardar();
+        editCBoxes();
     }
     
     public void init(){
@@ -58,10 +65,24 @@ public class FormEntregaView {
         GridPane.setConstraints(pedido, 1, 2);
         GridPane.setConstraints(ruta, 1, 3);
         GridPane.setConstraints(repartidor, 1, 4);
-        GridPane.setConstraints(observaciones, 1, 5);
-        GridPane.setConstraints(guardar, 1, 6);
+        GridPane.setConstraints(estado, 1, 5);
+        GridPane.setConstraints(observaciones, 1, 6);
+        GridPane.setConstraints(guardar, 1, 7);
     }
     
+    public void editCBoxes(){
+        //usar metodo para tener datos
+        ObservableList<Pedido> pe = FXCollections.observableArrayList();
+        ObservableList<Ruta> ru = FXCollections.observableArrayList();
+        ObservableList<Repartidor> re = FXCollections.observableArrayList();
+        ObservableList<Estado> es = FXCollections.observableArrayList();
+        
+        pedido.setItems(pe);
+        ruta.setItems(FXCollections.observableArrayList());
+        repartidor.setItems(FXCollections.observableArrayList());
+        estado.setItems(FXCollections.observableArrayList());
+        
+    }
     public void setActionGuardar(){
         guardar.setOnAction(value -> {
             if(notEmptyFields()){
@@ -78,6 +99,7 @@ public class FormEntregaView {
                 && pedido.getSelectionModel().getSelectedItem()!= null
                 && ruta.getSelectionModel().getSelectedItem()!= null
                 && repartidor.getSelectionModel().getSelectedItem()!= null
+                && estado.getSelectionModel().getSelectedItem()!= null
                 && !observaciones.getText().isEmpty();
     }
     
