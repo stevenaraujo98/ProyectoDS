@@ -59,7 +59,8 @@ public class ConexionDB {
      * @return - True si se logró crear la conexión, false en caso contrario
      */
     public boolean connect(String db, String user, String pass, String query){
-        return connect("192.168.99.100", 32769, db, user, pass, query);
+        //return connect("192.168.99.100", 32769, db, user, pass, query);
+        return connect("localhost", 3306, db, user, pass, query);
     }
     
     /**
@@ -119,4 +120,7 @@ public class ConexionDB {
         return this.getStatement().executeQuery("CALL " + procedure.getStringForm()); 
     }
     
+    public Connection getConnection(){
+        return instance.connection;
+    }
 }

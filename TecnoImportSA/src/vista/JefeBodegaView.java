@@ -5,58 +5,60 @@
  */
 package vista;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import modelo.*;
+import vista.basescreen.*;
 
 /**
  *
  * @author 
  */
-public class JefeBodegaView {
-    private final TabPane root;
-    private final Tab entregasTab; 
-    private final Tab rutasTab; 
-    private final Tab pedidosTab;
-    private final BorderPane paneEnTb;
-    private final BorderPane paneRuTb;
-    private final BorderPane panePeTb;
-    private final TableView entregasTbl;
-    private final Button nuevaEntrega;
+public class JefeBodegaView extends BaseView{
+    private Bodega bodega;
     
-    
-    public JefeBodegaView(){
-        root = new TabPane();
-        entregasTab = new Tab("Envios");
-        rutasTab = new Tab("Rutas");
-        pedidosTab = new Tab("Pedidos");
-        paneEnTb = new BorderPane();
-        paneRuTb = new BorderPane();
-        panePeTb = new BorderPane();
-        entregasTbl = new TableView();
-        nuevaEntrega = new Button("Nuevo envio");
-        
+    public JefeBodegaView(Bodega bodega){
+        this.bodega = bodega;
+        init();
+        logOut();
     }
     
-    public void init(){
-        root.getTabs().add(entregasTab);
-        root.getTabs().add(rutasTab);
-        root.getTabs().add(pedidosTab);
+    private void init(){
+        this.setTitleHome("JefeBodega");
+        this.setSubtitleHome(bodega.getJefeBodega().getNombreUsuario()); 
+        this.getMenu().addItemView(new ItemView("Envios", 
+                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+        this.getMenu().addItemView(new ItemView("Rutas",  
+                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+        this.getMenu().addItemView(new ItemView("Pedidos",  
+                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+        this.getMenu().addItemView(new ItemView("Repartidores",  
+                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+        this.getMenu().setOnAction(e -> {
+            switch(this.getMenu().getItemSelected()){
+                case 0:
+                    this.setTitle("Envios");
+                    this.setCenter(new Label("Envios")); 
+                    break;
+                case 1:
+                    this.setTitle("Rutas");
+                    this.setCenter(new Label("Rutas")); 
+                    break;
+                case 2:
+                    this.setTitle("Pedidos");
+                    this.setCenter(new Label("Pedidos"));
+                case 3:
+                    this.setTitle("Repartidores");
+                    this.setCenter(new Label("Repartidores"));
+                default:
+                    break;
+            }
+        }); 
     }
     
-    public void initEntregas(){
-        paneEnTb.setCenter(entregasTbl);
-        paneEnTb.setRight(nuevaEntrega);
-        entregasTab.setContent(paneEnTb);
-    }
-    
-    public void initRutas(){
-        
-    }
-    
-    public void initPedidos(){
-        
+    private void logOut() {
+        this.setOnLogOutAction(e -> {
+            this.close();
+        });
     }
 }
