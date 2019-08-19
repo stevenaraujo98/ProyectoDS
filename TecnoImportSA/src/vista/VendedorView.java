@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import modelo.Admin;
 import modelo.Categoria;
+import modelo.Producto;
 import modelo.Vendedor;
 import vista.basescreen.BaseView;
 import vista.basescreen.ItemView;
@@ -67,13 +70,14 @@ public class VendedorView extends BaseView{
     }
     
     private Pane panelVenta(){
+        Button search = new Button("Buscar"); 
         TextField bynombre = new TextField();
         bynombre.setPromptText("Nombre del producto"); 
         TextField bydescrip = new TextField();
         bydescrip.setPromptText("Descripcion del producto"); 
         ComboBox<Categoria> categorias = new ComboBox<>();
         llenarCombo(categorias);
-        HBox top = new HBox(10, bynombre, bydescrip, new Label("Categoria"), categorias);
+        HBox top = new HBox(10, bynombre, bydescrip, new Label("Categoria"), categorias, search);
         top.setPadding(new Insets(30, 30, 30, 30)); 
         return top;
     }
@@ -90,6 +94,32 @@ public class VendedorView extends BaseView{
             }
         } catch (SQLException ex) {
             Logger.getLogger(VendedorView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private Pane homeView(){
+        
+        
+        return null;
+    }
+    
+    private Pane itemProducto(Producto p) {
+        CheckBox select = new CheckBox();
+        HBox item = new HBox();
+        return null;
+    }
+    
+    private class ItemProducto extends HBox{
+        private Producto producto;
+        private CheckBox check;
+        
+        ItemProducto(Producto p){
+            this.producto = p;
+            initialize();
+        }
+        
+        private void initialize(){
+            
         }
     }
 }
