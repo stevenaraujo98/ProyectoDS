@@ -89,5 +89,23 @@ public class JefeBodegaController {
         return estados;
     }
     
+    public static ArrayList<Repartidor> getRepartidores(String filter){
+        ArrayList<Repartidor> repartidores = new ArrayList();
+        Procedure pro = null;
+        if(filter.isEmpty())
+            pro = new Procedure("obtenerRepartidores").noArguments();
+        else 
+            pro = new Procedure("obtenerRepartidores").addValue(filter);
+        try{
+            ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
+            while(rs.next()){
+                repartidores.add(new Repartidor(rs.getString(3),rs.getString(4),rs.getString(5),new Contact(rs.getString(6),rs.getString(7),rs.getString(8)),0,0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JefeBodegaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return repartidores;
+    } 
+    
 }
 
