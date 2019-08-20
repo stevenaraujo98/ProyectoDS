@@ -84,4 +84,8 @@ public class LoginView {
     public void close(){
         stage.close();
     }
+    
+    public static void open() {
+        new LoginView().showLogin();
+    }
 }

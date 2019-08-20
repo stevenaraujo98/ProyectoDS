@@ -82,6 +82,7 @@ public class VendedorView extends BaseView{
     private void logOut() {
         this.setOnLogOutAction(e -> {
             this.close();
+            LoginView.open();
         });
     }
     
