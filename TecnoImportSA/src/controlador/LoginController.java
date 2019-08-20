@@ -9,10 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.Admin;
 import modelo.Bodega;
+import modelo.Gerente;
 import modelo.JefeBodega;
 import modelo.Usuario;
 import modelo.Vendedor;
 import vista.AdminView;
+import vista.GerenteView;
 import vista.JefeBodegaView;
 import vista.LoginView;
 import vista.VendedorView;
@@ -43,6 +45,9 @@ public class LoginController implements EventHandler<ActionEvent>{
             }else if(usuario instanceof Vendedor){
                 VendedorView v = new VendedorView((Vendedor)usuario);
                 v.show();
+            }else if(usuario instanceof Gerente){
+                GerenteView g = new GerenteView((Gerente)usuario);
+                g.show();
             }
         }else
             login.showMensajeError();
