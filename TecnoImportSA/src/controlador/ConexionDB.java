@@ -123,4 +123,6 @@ public class ConexionDB {
     public Connection getConnection(){
         return instance.connection;
     }
+    
+    
 }

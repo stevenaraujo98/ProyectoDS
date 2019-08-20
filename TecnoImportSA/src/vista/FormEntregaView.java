@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.basescreen;
+package vista;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
