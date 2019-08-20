@@ -5,9 +5,15 @@
  */
 package vista;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -23,6 +29,7 @@ public class GerenteView extends BaseView{
     
     private Gerente gerente;
     private VBox listado;
+    FXMLLoader loader;
     
     public GerenteView(Gerente gerente){
         this.gerente = gerente;
@@ -33,22 +40,32 @@ public class GerenteView extends BaseView{
     private void init(){
         this.setTitleHome("GERENTE");
         this.setSubtitleHome(gerente.getNombreUsuario()); 
-        this.getMenu().addItemView(new ItemView("Inventarios", 
+        this.getMenu().addItemView(new ItemView("Asignar Administrador", 
                     new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
-        this.getMenu().addItemView(new ItemView("Usuarios",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
-        this.getMenu().setOnAction(e -> {
-            switch(this.getMenu().getItemSelected()){
-                case 0:
-                    this.setTitle("Inventarios");
-                    this.setCenter(new Label("Inventarios")); 
-                    break;
-                case 1:
-                    this.setTitle("Usuarios");
-                    this.setCenter(listUsers());  
-                    break;
-                default:
-                    break;
+//        this.getMenu().addItemView(new ItemView("Usuarios",  
+//                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+        this.getMenu().setOnAction(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                switch (GerenteView.this.getMenu().getItemSelected()) {
+                    case 0:
+                        GerenteView.this.setTitle("Asignar Administrador");
+                        loader = new FXMLLoader(GerenteView.this.getClass().getResource("/vista/AsignacionAdmin.fxml"));
+                        {
+                            try {
+                                GerenteView.this.setCenter(loader.load());
+                            }catch (IOException ex) {
+                                Logger.getLogger(GerenteView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        break;
+                        //                case 1:
+//                    this.setTitle("Usuarios");
+//                    this.setCenter(listUsers());  
+//                    break;
+                    default:
+                        break;
+                }
             }
         }); 
     }

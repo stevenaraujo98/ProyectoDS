@@ -5,20 +5,16 @@
  */
 package vista;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import modelo.Estado;
-import modelo.Pedido;
+import modelo.PedidoAbastecimiento;
 import modelo.Repartidor;
 import modelo.Ruta;
 
@@ -32,10 +28,15 @@ public class FormEntregaView {
     private ComboBox<Estado> estado;
     private ComboBox<Ruta> ruta;
     private ComboBox<Repartidor> repartidor;
-    private ComboBox<Pedido> pedido;
+    private ComboBox<PedidoAbastecimiento> pedido;
     private TextArea observaciones;
     private Button guardar;
     private boolean b;
+    
+    public GridPane getRoot(){
+        return this.root;
+    }
+        
 
     public FormEntregaView() {
         this.root = new GridPane();
@@ -55,24 +56,24 @@ public class FormEntregaView {
         root.setPadding(new Insets(10,10,10,10));
         root.setVgap(8);
         root.setHgap(10);
-        GridPane.setConstraints(new Label("ENVIO"), 1, 0);
-        GridPane.setConstraints(new Label("Fecha entrega:"), 0, 1);
-        GridPane.setConstraints(new Label("Pedido:"), 0, 2);
-        GridPane.setConstraints(new Label("Ruta:"), 0, 3);
+        Label l1 = new Label("ENVIO");
+        Label l2 = new Label("Fecha entrega:");
+        Label l3 = new Label("Pedido:");
+        Label l4 = new Label("Ruta:");
+        GridPane.setConstraints(l1, 1, 0);
+        GridPane.setConstraints(l2, 0, 1);
+        GridPane.setConstraints(l3, 0, 2);
+        GridPane.setConstraints(l4, 0, 3);
         GridPane.setConstraints(fechaEntrega, 1, 1);
         GridPane.setConstraints(pedido, 1, 2);
         GridPane.setConstraints(ruta, 1, 3);
         GridPane.setConstraints(guardar, 1, 4);
+        root.getChildren().addAll(l1,l2,l3,l4,fechaEntrega,pedido,ruta,guardar);
     }
     
     public void editCBoxes(){
         //usar metodo para tener datos
-        ObservableList<Pedido> pe = FXCollections.observableArrayList();
-        ObservableList<Ruta> ru = FXCollections.observableArrayList();
-        ObservableList<Repartidor> re = FXCollections.observableArrayList();
-        ObservableList<Estado> es = FXCollections.observableArrayList();
-        
-        pedido.setItems(pe);
+        pedido.setItems(FXCollections.observableArrayList());
         ruta.setItems(FXCollections.observableArrayList());
         repartidor.setItems(FXCollections.observableArrayList());
         estado.setItems(FXCollections.observableArrayList());

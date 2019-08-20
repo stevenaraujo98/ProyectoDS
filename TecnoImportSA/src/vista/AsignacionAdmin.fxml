@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="765.0" prefWidth="1218.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controlador.AsignacionAdminController">
+    <stylesheets>
+        <URL value="@/recursos/asignacionadmin.css" />
+        
+    </stylesheets>
+   <children>
+      <TableView fx:id="tabla" layoutX="14.0" layoutY="66.0" prefHeight="327.0" prefWidth="1006.0">
+        <columns>
+            <TableColumn fx:id="columna_cedula" prefWidth="135.0" text="Dni" />
+          <TableColumn fx:id="columna_nombres" prefWidth="126.0" text="Nombres" />
+            <TableColumn fx:id="columna_apellidos" prefWidth="129.0" text="Apellidos" />
+            <TableColumn fx:id="columna_telefono" prefWidth="141.0" text="Telefono" />
+            <TableColumn fx:id="columna_salario" prefWidth="96.0" text="Salario" />
+            <TableColumn fx:id="columna_email" prefWidth="215.0" text="Email" />
+            <TableColumn fx:id="columna_tipoempleado" prefWidth="112.0" text="Tipo de Empleado" />
+        </columns>
+      </TableView>
+      <Button fx:id="botonasignar" layoutX="1076.0" layoutY="66.0" mnemonicParsing="false" text="Asignar" />
+      <Button fx:id="botonquitarasigacion" layoutX="1035.0" layoutY="123.0" mnemonicParsing="false" text="Quitar Asignación" />
+      <ComboBox fx:id="combolocales" layoutX="28.0" layoutY="14.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

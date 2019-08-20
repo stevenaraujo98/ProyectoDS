@@ -18,6 +18,11 @@ public class Empleado extends Persona {
         super(dni, nombres, apellidos, contact.getDireccion(), contact.getCorreo(), contact.getTelefono());
         this.idLocal = idLocal;
     }
+    
+    public Empleado(String dni, String nombres, String apellidos, Contact contact, double sueldo, int idLocal, int tipoEmpleado){
+        super(dni, nombres, apellidos, contact.getDireccion(), contact.getCorreo(), contact.getTelefono());
+        this.idLocal = idLocal;
+    }
 
     public double getSueldo() {
         return sueldo;

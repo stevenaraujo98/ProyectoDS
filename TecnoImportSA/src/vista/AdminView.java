@@ -78,7 +78,7 @@ public class AdminView extends BaseView{
     private Pane listUsers(){
         VBox lista = new VBox(10);
         lista.setPadding(new Insets(30, 30, 30, 30)); 
-        String query = "select e.cedula,e.nombres,e.apellidos,e.telefono,e.salario,t.nombre from empleados e, tipo_empleado t where e.tipo_empleado = t.id_tipo";
+        String query = "select e.cedula,e.nombres,e.apellidos,e.telefono,e.salario,t.nombre from Empleados e, Tipo_empleado t where e.tipo_empleado = t.id_tipo";
         try {
             ResultSet rs = ConexionDB.getInstance().getStatement().executeQuery(query);
             if(rs != null){
@@ -88,7 +88,7 @@ public class AdminView extends BaseView{
                     lista.getChildren().add(new Text(texto));
                 }
             }
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;

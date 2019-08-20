@@ -8,6 +8,7 @@ package vista;
 import controlador.JefeBodegaController;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -18,8 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import modelo.Envio;
-import modelo.Estado;
+import javafx.stage.Stage;
+import modelo.*;
 
 
 /**
@@ -51,7 +52,9 @@ public class InfoEntregaView extends BorderPane{
         this.setRight(new VBox(nuevo, editar, estados));
         setOnKeyPressedBuscar();
         setActionEditar();
+        setActionNuevo();
         fillTable(JefeBodegaController.getEnvios());
+        //estados.setItems(FXCollections.observableArrayList(JefeBodegaController.getEstados()));
         
     }
     
@@ -83,7 +86,10 @@ public class InfoEntregaView extends BorderPane{
     
     public void setActionNuevo(){
         nuevo.setOnAction(value -> {
-            //crea un nuevo formEntregaView
+            FormEntregaView form = new FormEntregaView();
+            Stage secondStage = new Stage();
+            secondStage.setScene(new Scene(form.getRoot()));
+            secondStage.showAndWait();
         });
         
     }
@@ -101,7 +107,6 @@ public class InfoEntregaView extends BorderPane{
                 alert.show();
             }
         });
-        
     }
     
     

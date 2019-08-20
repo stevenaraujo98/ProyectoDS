@@ -1,4 +1,4 @@
-alter table Clientes
+﻿alter table Clientes
 add column email varchar(80);
 
 INSERT into Clientes(cedula,nombres,apellidos,domicilio,telefono,email)
@@ -228,7 +228,7 @@ CREATE procedure buscarRutas(id varchar(10))
 	end //
 DELIMITER ;
 
-insert into Usuarios (username, userpass) values('gerente', aes_encrypt("gerente", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
+insert into Usuarios (username, userpass) values('ssam', aes_encrypt("gerente", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
 values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 4, "direccion5", "saraujo@hotmail.com");
 
@@ -243,3 +243,24 @@ CREATE procedure productoPorLocal(in idLocal integer)
 	end //
 DELIMITER ;
 
+drop procedure if exists buscarRutas;
+DELIMITER //
+create procedure buscarRutas()
+	begin
+		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
+        from Envios e, Repartidores r, Observaciones o
+        where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs;
+	end //
+DELIMITER ;
+
+drop procedure if exists buscarRutasFiltradas;
+DELIMITER //
+create procedure buscarRutasFiltradas(in filtro varchar(20))
+	begin
+		declare pattern char;
+        set @pattern = lower(filtro) + '%';
+		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
+        from Envios e, Repartidores r, Observaciones o
+        where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs and (char(e.id_ruta) like pattern or lower(e.direccion) like pattern or lower(r.nombres) like pattern or lower(r.apellidos) like pattern or lower(o.descripcion) like pattern);
+	end //
+DELIMITER ;

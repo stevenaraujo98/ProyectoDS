@@ -8,6 +8,8 @@ package controlador;
 import dbmanager.Procedure;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,7 +97,7 @@ public class JefeBodegaController {
         if(filter.isEmpty())
             pro = new Procedure("obtenerRepartidores").noArguments();
         else 
-            pro = new Procedure("obtenerRepartidores").addValue(filter);
+            pro = new Procedure("obtenerRepartidoresFiltrar").addValue(filter);
         try{
             ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
             while(rs.next()){
@@ -107,5 +109,18 @@ public class JefeBodegaController {
         return repartidores;
     } 
     
+    public static ArrayList<PedidoAbastecimiento> getAbastecimientos(){
+        ArrayList<PedidoAbastecimiento> abastecimientos = new ArrayList();
+        Procedure pro = new Procedure("obtenerAbastecimientos").noArguments();
+        try{
+            ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
+            while(rs.next()){
+                abastecimientos.add(new PedidoAbastecimiento(rs.getInt(1),rs.getDate(2).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JefeBodegaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return abastecimientos;
+    }
 }
 

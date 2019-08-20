@@ -20,6 +20,11 @@ public class Contact {
         this.telefono = telefono;
     }
 
+    public Contact(String correo, String telefono) {
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+    
     public String getDireccion() {
         return direccion;
     }
@@ -44,5 +49,8 @@ public class Contact {
         this.telefono = telefono;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.correo + " " + this.telefono;
+    }
 }
