@@ -213,11 +213,23 @@ call buscarProductos(1, "null", "pulgadas", 0);
 
 
 DELIMITER //
+
+insert into Observaciones(descripcion) values ('realizó con éxito');
+insert into Observaciones(descripcion) values ('la dirección no se encontró');
+insert into Observaciones(descripcion) values ('no había nadie que reciba el envío ');
+insert into Envios(direccion, id_repartidor,tipo_entrega, id_observacion, eliminado) values('Prosperina',1,1,1,0);
+insert into Envios(direccion, id_repartidor,tipo_entrega, id_observacion, eliminado) values('Martha',2,2,2,0);
+insert into Envios(direccion, id_repartidor,tipo_entrega, id_observacion, eliminado) values('Juan Montalvo',3,1,3,0);
+
 CREATE procedure buscarRutas(id varchar(10))
 		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
         from Envios e, Repartidores r, Observaciones o
         where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs;
 	end //
 DELIMITER ;
+
+insert into Usuarios (username, userpass) values('gerente', aes_encrypt("gerente", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
+insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
+values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 5, "direccion5", "saraujo@hotmail.com");
 
 call buscarRutas;
