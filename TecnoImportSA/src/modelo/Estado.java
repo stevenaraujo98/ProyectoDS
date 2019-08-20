@@ -14,6 +14,15 @@ public class Estado {
     private String nombreEstd;
     private String descripcionEstd;
 
+    public Estado(int idEstd, String nombreEstd) {
+        this.idEstd = idEstd;
+        this.nombreEstd = nombreEstd;
+    }
+    
+    public Estado(){
+        
+    }
+    
     public int getIdEstd() {
         return idEstd;
     }

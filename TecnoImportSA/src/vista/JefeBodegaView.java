@@ -28,8 +28,6 @@ public class JefeBodegaView extends BaseView{
         this.setSubtitleHome(bodega.getJefeBodega().getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Envios", 
                     new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
-        this.getMenu().addItemView(new ItemView("Rutas",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Pedidos",  
                     new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Repartidores",  
@@ -41,13 +39,9 @@ public class JefeBodegaView extends BaseView{
                     this.setCenter(new InfoEntregaView()); 
                     break;
                 case 1:
-                    this.setTitle("Rutas");
-                    this.setCenter(new Label("Rutas")); 
-                    break;
-                case 2:
                     this.setTitle("Pedidos");
                     this.setCenter(new Label("Pedidos"));
-                case 3:
+                case 2:
                     this.setTitle("Repartidores");
                     this.setCenter(new Label("Repartidores"));
                 default:

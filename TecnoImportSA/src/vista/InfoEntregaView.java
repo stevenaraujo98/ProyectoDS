@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import modelo.Envio;
-import modelo.JefeBodega;
+import modelo.Estado;
 
 
 /**
@@ -31,6 +32,7 @@ public class InfoEntregaView extends BorderPane{
     private TextField buscar;
     private Button nuevo;
     private Button editar;
+    private ComboBox<Estado> estados;
     
     public InfoEntregaView(){
         super();
@@ -38,6 +40,7 @@ public class InfoEntregaView extends BorderPane{
         buscar = new TextField();
         nuevo = new Button("Nuevo");
         editar = new Button("Cambiar estado");
+        estados = new ComboBox<>();
         init();
     }
     
@@ -45,19 +48,23 @@ public class InfoEntregaView extends BorderPane{
         buscar.setPromptText("Buscar");
         this.setTop(new VBox(new Label("Buscar:"), buscar));
         this.setCenter(table);
-        this.setRight(new VBox(nuevo, editar));
+        this.setRight(new VBox(nuevo, editar, estados));
+        setOnKeyPressedBuscar();
+        setActionEditar();
         fillTable(JefeBodegaController.getEnvios());
         
     }
     
     
     public void fillTable(ArrayList<Envio> envios){
+        table.getColumns().clear();
+        table.getItems().clear();
         TableColumn<Envio, String> id = new TableColumn("ID");
         //TableColumn<Envio, String> fecha0 = new TableColumn("FECHA REGISTRO");
         //TableColumn fecha1 = new TableColumn("FECHA ENTREGA");
         //TableColumn<Envio, String> pedido = new TableColumn("PEDIDO");
         TableColumn<Envio, String> ruta = new TableColumn("RUTA");
-        TableColumn<Envio, String> repartidor = new TableColumn("Repartidor");
+        TableColumn<Envio, String> repartidor = new TableColumn("REPARTIDOR");
         TableColumn<Envio, String> estado = new TableColumn("ESTADO");
         //TableColumn observaciones = new TableColumn("OBSERVACIONES");        
         table.getColumns().addAll(id, ruta, repartidor, estado);
@@ -102,11 +109,17 @@ public class InfoEntregaView extends BorderPane{
         buscar.setOnKeyPressed(kEvent -> {
             if(!buscar.getText().isEmpty()){
                 String filter = buscar.getText();
-                //fillTable();
-                return;
+                System.out.println(filter);
+                fillTable(JefeBodegaController.getEnviosFiltered(filter));
+            }else{
+                fillTable(JefeBodegaController.getEnvios());
             }
-            //fillTable();
+            
         });
+    }
+    
+    public void fillEstados(){
+        estados.setItems(FXCollections.observableArrayList(JefeBodegaController.getEstados()));
     }
             
 }

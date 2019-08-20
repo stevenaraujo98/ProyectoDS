@@ -59,15 +59,10 @@ public class FormEntregaView {
         GridPane.setConstraints(new Label("Fecha entrega:"), 0, 1);
         GridPane.setConstraints(new Label("Pedido:"), 0, 2);
         GridPane.setConstraints(new Label("Ruta:"), 0, 3);
-        GridPane.setConstraints(new Label("Repartidor:"), 0, 4);
-        GridPane.setConstraints(new Label("Observaciones:"), 0, 5);
         GridPane.setConstraints(fechaEntrega, 1, 1);
         GridPane.setConstraints(pedido, 1, 2);
         GridPane.setConstraints(ruta, 1, 3);
-        GridPane.setConstraints(repartidor, 1, 4);
-        GridPane.setConstraints(estado, 1, 5);
-        GridPane.setConstraints(observaciones, 1, 6);
-        GridPane.setConstraints(guardar, 1, 7);
+        GridPane.setConstraints(guardar, 1, 4);
     }
     
     public void editCBoxes(){
@@ -83,6 +78,7 @@ public class FormEntregaView {
         estado.setItems(FXCollections.observableArrayList());
         
     }
+    
     public void setActionGuardar(){
         guardar.setOnAction(value -> {
             if(notEmptyFields()){
