@@ -6,8 +6,11 @@
 package vista;
 
 import controlador.ConexionDB;
+import controlador.JefeBodegaController;
+import dbmanager.Procedure;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import modelo.Envio;
 
 /**
  *
@@ -17,8 +20,13 @@ public class Main extends Application{
     @Override
     public void init(){
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
-        //ConexionDB.getInstance().connect("SistemaVentasBD2", "root", "volksWAGEN1", query);
+        //ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "volksWAGEN1", query);
+        Procedure pro = new Procedure("buscarRutas").noArguments();
+        System.out.println(pro.getStringForm());
+        JefeBodegaController.getEnvios().forEach((e) -> {
+            System.out.println(e.getIdEnv());
+        });
     }
     
     @Override

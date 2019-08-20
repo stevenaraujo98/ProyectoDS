@@ -23,7 +23,7 @@ public class ConexionDB {
     /**
      * Instancia de la conexión a la base de datos
      */
-    private static ConexionDB instance = new ConexionDB();
+    private final static ConexionDB instance = new ConexionDB();
     private final String SCHEME = "jdbc:mysql";
     private Connection connection;
     
@@ -59,7 +59,8 @@ public class ConexionDB {
      * @return - True si se logró crear la conexión, false en caso contrario
      */
     public boolean connect(String db, String user, String pass, String query){
-        return connect("192.168.99.100", 3306, db, user, pass, query);
+        //return connect("192.168.99.100", 3306, db, user, pass, query);
+        return connect("localhost", 3306, db, user, pass, query);
     }
     
     /**

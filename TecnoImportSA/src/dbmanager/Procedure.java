@@ -26,6 +26,11 @@ public class Procedure {
         builder.append(" (");
     }
     
+    public Procedure noArguments(){
+        builder.append(",");
+        return this;
+    }
+    
     public Procedure addValue(String value){
         builder.append("\"");
         builder.append(value);

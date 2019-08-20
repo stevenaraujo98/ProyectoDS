@@ -52,23 +52,23 @@ public class InfoEntregaView extends BorderPane{
     
     
     public void fillTable(ArrayList<Envio> envios){
-        TableColumn id = new TableColumn("ID");
-        TableColumn fecha0 = new TableColumn("FECHA REGISTRO");
-        TableColumn fecha1 = new TableColumn("FECHA ENTREGA");
-        TableColumn pedido = new TableColumn("PEDIDO");
-        TableColumn ruta = new TableColumn("RUTA");
-        TableColumn repartidor = new TableColumn("Repartidor");
-        TableColumn estado = new TableColumn("ESTADO");
-        TableColumn observaciones = new TableColumn("OBSERVACIONES");        
-        table.getColumns().addAll(id, fecha0, fecha1, pedido, ruta, estado, observaciones);
+        TableColumn<Envio, String> id = new TableColumn("ID");
+        //TableColumn<Envio, String> fecha0 = new TableColumn("FECHA REGISTRO");
+        //TableColumn fecha1 = new TableColumn("FECHA ENTREGA");
+        //TableColumn<Envio, String> pedido = new TableColumn("PEDIDO");
+        TableColumn<Envio, String> ruta = new TableColumn("RUTA");
+        TableColumn<Envio, String> repartidor = new TableColumn("Repartidor");
+        TableColumn<Envio, String> estado = new TableColumn("ESTADO");
+        //TableColumn observaciones = new TableColumn("OBSERVACIONES");        
+        table.getColumns().addAll(id, ruta, repartidor, estado);
         
         id.setCellValueFactory(new PropertyValueFactory<Envio,String>("idEnv"));
-        fecha0.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaRegistroEnv"));
-        fecha1.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaEntregaEnv"));
-        pedido.setCellValueFactory(new PropertyValueFactory<Envio,String>("pedidoStrEnv"));
+        //fecha0.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaRegistroEnv"));
+        //fecha1.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaEntregaEnv"));
+        //pedido.setCellValueFactory(new PropertyValueFactory<Envio,String>("pedidoStrEnv"));
         ruta.setCellValueFactory(new PropertyValueFactory<Envio,String>("rutaEnv"));
         repartidor.setCellValueFactory(new PropertyValueFactory<Envio,String>("repartidorEnv"));
-        observaciones.setCellValueFactory(new PropertyValueFactory<Envio,String>("observacionesEnv"));
+        //servaciones.setCellValueFactory(new PropertyValueFactory<Envio,String>("observacionesEnv"));
         estado.setCellValueFactory(new PropertyValueFactory<Envio,String>("estadoEnv"));
         
         table.setItems(FXCollections.observableArrayList(envios));
