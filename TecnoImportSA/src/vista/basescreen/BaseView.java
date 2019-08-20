@@ -47,6 +47,10 @@ public class BaseView extends BorderPane {
         topPane();
     }
     
+    public Stage getStage(){
+        return this.stage;
+    }
+    
     private void topPane() {
         StackPane topContent = new StackPane();
         backgorundTopPane(topContent);

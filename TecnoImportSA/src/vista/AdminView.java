@@ -5,14 +5,17 @@
  */
 package vista;
 
+import controlador.AdminController;
 import controlador.ConexionDB;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -44,7 +47,16 @@ public class AdminView extends BaseView{
             switch(this.getMenu().getItemSelected()){
                 case 0:
                     this.setTitle("Inventarios");
-                    this.setCenter(new Label("Inventarios")); 
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        AnchorPane root = loader.load(getClass().getResource("AdminView.fxml").openStream());
+                        this.setCenter(root);
+                        AdminController ad = (AdminController)loader.getController();
+                        ad.setAdminView(this); 
+                       
+                    } catch (IOException ex) {
+                        Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case 1:
                     this.setTitle("Usuarios");

@@ -5,7 +5,12 @@
  */
 package modelo;
 
+import controlador.ConexionDB;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -75,4 +80,36 @@ public abstract class Localidad {
         
         return null; 
     }
+    
+    public static ArrayList<Localidad> getLocales(){
+        String query = "select * from Locales";
+        ArrayList<Localidad> locales = new ArrayList<>();
+        try {
+            ResultSet rs = ConexionDB.getInstance().getStatement().executeQuery(query);
+            if(rs != null){
+                while(rs.next()){
+                    Localidad local = null;
+                    switch(rs.getInt(5)){
+                        case 1:
+                            local = new Matriz(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));  
+                            break;
+                        case 2:
+                            local = new Sucursal(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                            break;
+                        case 3:
+                            local = new Bodega(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                            break;
+                        default:
+                            break;
+                    }
+                    locales.add(local);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Localidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return locales;
+    }
+    
+    
 }

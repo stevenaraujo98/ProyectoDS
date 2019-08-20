@@ -55,7 +55,7 @@ insert into Articulos(precio,descripcion,categoria,nombre)values(569.95, "Mucho 
 insert into Usuarios (username, userpass) values('jordi', aes_encrypt("jefeb1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
-values("0952214550", "Jordi", "Villao", "0934905040", 440, 4, 3, "direccion1", "jvillao@espol.edu.ec");
+values("0952214550", "Jordi", "Villao", "0934905040", 440, 4, 2, "direccion1", "jvillao@espol.edu.ec");
 insert into Usuarios (username, userpass) values('saraujo', aes_encrypt("vendedor1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
 values("0942230367", "Steven", "Araujo Moran", "0975431414", 440, 3, 3, "direccion2", "saraujo@espol.edu.ec");
@@ -97,12 +97,12 @@ insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 1, 12);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(18, 2, 4);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(15, 2, 5);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 2, 9);
-insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 2, 3);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 2, 4);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 2, 10);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(30, 3, 12);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(20, 3, 1);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(10, 3, 8);
-insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 3, 3);
+insert into LocalArticulo(cantidad,id_local,id_articulo) values(12, 3, 2);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 3, 2);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(3, 3, 6);
 insert into LocalArticulo(cantidad,id_local,id_articulo) values(35, 1, 6);
@@ -230,6 +230,16 @@ DELIMITER ;
 
 insert into Usuarios (username, userpass) values('gerente', aes_encrypt("gerente", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
-values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 5, "direccion5", "saraujo@hotmail.com");
+values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 4, "direccion5", "saraujo@hotmail.com");
 
 call buscarRutas;
+
+DELIMITER //
+CREATE procedure productoPorLocal(in idLocal integer)
+	begin
+		select a.id_articulo, a.precio, a.nombre, a.descripcion, c.id_categoria, c.nombre, c.descripcion, la.cantidad 
+        from LocalArticulo la, Articulos a, Categorias c
+        where la.id_local = 2 and la.id_articulo = a.id_articulo and c.id_categoria = a.categoria;
+	end //
+DELIMITER ;
+
