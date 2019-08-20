@@ -71,4 +71,8 @@ public abstract class Localidad {
         return this.nombreLcld;
     }
     
+    public static Localidad getLocalByID(int id){
+        
+        return null; 
+    }
 }

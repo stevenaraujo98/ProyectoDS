@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.JefeBodegaController;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import modelo.Envio;
+import modelo.JefeBodega;
 
 
 /**
@@ -44,7 +46,8 @@ public class InfoEntregaView extends BorderPane{
         this.setTop(new VBox(new Label("Buscar:"), buscar));
         this.setCenter(table);
         this.setRight(new VBox(nuevo, editar));
-        //fillTable();
+        fillTable(JefeBodegaController.getEnvios());
+        
     }
     
     
@@ -66,6 +69,7 @@ public class InfoEntregaView extends BorderPane{
         ruta.setCellValueFactory(new PropertyValueFactory<Envio,String>("rutaEnv"));
         repartidor.setCellValueFactory(new PropertyValueFactory<Envio,String>("repartidorEnv"));
         observaciones.setCellValueFactory(new PropertyValueFactory<Envio,String>("observacionesEnv"));
+        estado.setCellValueFactory(new PropertyValueFactory<Envio,String>("estadoEnv"));
         
         table.setItems(FXCollections.observableArrayList(envios));
     }

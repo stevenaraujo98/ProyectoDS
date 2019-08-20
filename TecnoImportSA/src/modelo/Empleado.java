@@ -12,9 +12,11 @@ package modelo;
 public class Empleado extends Persona {
     
     protected double sueldo;
+    protected int idLocal;
     
-    public Empleado(String dni, String nombres, String apellidos, Contact contact, double sueldo) {
+    public Empleado(String dni, String nombres, String apellidos, Contact contact, double sueldo, int idLocal) {
         super(dni, nombres, apellidos, contact.getDireccion(), contact.getCorreo(), contact.getTelefono());
+        this.idLocal = idLocal;
     }
 
     public double getSueldo() {
@@ -23,6 +25,14 @@ public class Empleado extends Persona {
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
+    }
+
+    public int getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(int idLocal) {
+        this.idLocal = idLocal;
     }
     
 }

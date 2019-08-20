@@ -13,8 +13,8 @@ public class Repartidor extends Empleado{
     
     private boolean disponible;
     
-    public Repartidor(String dni, String nombres, String apellidos, Contact contact, double sueldo) {
-        super(dni, nombres, apellidos, contact, sueldo);
+    public Repartidor(String dni, String nombres, String apellidos, Contact contact, double sueldo, int idLocal) {
+        super(dni, nombres, apellidos, contact, sueldo, idLocal);
         this.disponible = true;
     }
 

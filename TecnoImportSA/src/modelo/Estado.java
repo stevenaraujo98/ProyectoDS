@@ -38,5 +38,8 @@ public class Estado {
         this.descripcionEstd = descripcionEstd;
     }
     
+    public String toString(){
+        return this.nombreEstd;
+    }
     
 }

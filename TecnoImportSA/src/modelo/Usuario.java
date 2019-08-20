@@ -24,7 +24,7 @@ public class Usuario extends Empleado {
 
     public Usuario(String nombreUsuario, String clave, Empleado emp) {
         super(emp.dni, emp.nombres, emp.apellidos, 
-                new Contact(emp.direccion, emp.correo, emp.telefono), emp.sueldo);
+                new Contact(emp.direccion, emp.correo, emp.telefono), emp.sueldo, emp.getIdLocal());
         this.nombreUsuario = nombreUsuario;
         this.clave = clave;
     }
@@ -65,9 +65,11 @@ public class Usuario extends Empleado {
                 ResultSet rs2 = ConexionDB.getInstance().executeProcedureResult(pro2);
                 if(rs2 == null) return null;
                 Empleado e = null;
-                if(rs2.next())
+                if(rs2.next()){
                     e = new Empleado(rs2.getString(1), rs2.getString(2), rs2.getString(3),
-                            new Contact(rs2.getString(4), rs2.getString(5), rs2.getString(6)), rs2.getDouble(7));
+                            new Contact(rs2.getString(4), rs2.getString(5), rs2.getString(6)), 
+                            rs2.getDouble(7), rs2.getInt(9));
+                }
                 if(e != null){
                     return selectReuturn(rs2.getInt(8), id_user, rs.getString(2), rs.getString(3), e); 
                 }
