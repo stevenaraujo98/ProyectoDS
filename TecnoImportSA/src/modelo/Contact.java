@@ -51,6 +51,6 @@ public class Contact {
     
     @Override
     public String toString(){
-        return this.correo + " " + this.telefono;
+        return this.correo + "/" + this.telefono +"/"+ this.direccion;
     }
 }

@@ -101,7 +101,7 @@ public class JefeBodegaController {
         try{
             ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
             while(rs.next()){
-                repartidores.add(new Repartidor(rs.getString(3),rs.getString(4),rs.getString(5),new Contact(rs.getString(6),rs.getString(7),rs.getString(8)),0,0));
+                repartidores.add(new Repartidor(rs.getString(4),rs.getString(5),rs.getString(6),new Contact(rs.getString(9),rs.getString(10),rs.getString(7)),0,0));
             }
         } catch (SQLException ex) {
             Logger.getLogger(JefeBodegaController.class.getName()).log(Level.SEVERE, null, ex);

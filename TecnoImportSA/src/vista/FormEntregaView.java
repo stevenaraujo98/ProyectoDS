@@ -72,7 +72,6 @@ public class FormEntregaView {
     }
     
     public void editCBoxes(){
-        //usar metodo para tener datos
         pedido.setItems(FXCollections.observableArrayList());
         ruta.setItems(FXCollections.observableArrayList());
         repartidor.setItems(FXCollections.observableArrayList());

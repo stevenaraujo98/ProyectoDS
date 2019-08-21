@@ -54,7 +54,7 @@ public class InfoEntregaView extends BorderPane{
         setActionEditar();
         setActionNuevo();
         fillTable(JefeBodegaController.getEnvios());
-        //estados.setItems(FXCollections.observableArrayList(JefeBodegaController.getEstados()));
+        fillEstados();
         
     }
     
@@ -63,22 +63,14 @@ public class InfoEntregaView extends BorderPane{
         table.getColumns().clear();
         table.getItems().clear();
         TableColumn<Envio, String> id = new TableColumn("ID");
-        //TableColumn<Envio, String> fecha0 = new TableColumn("FECHA REGISTRO");
-        //TableColumn fecha1 = new TableColumn("FECHA ENTREGA");
-        //TableColumn<Envio, String> pedido = new TableColumn("PEDIDO");
         TableColumn<Envio, String> ruta = new TableColumn("RUTA");
         TableColumn<Envio, String> repartidor = new TableColumn("REPARTIDOR");
         TableColumn<Envio, String> estado = new TableColumn("ESTADO");
-        //TableColumn observaciones = new TableColumn("OBSERVACIONES");        
         table.getColumns().addAll(id, ruta, repartidor, estado);
         
         id.setCellValueFactory(new PropertyValueFactory<Envio,String>("idEnv"));
-        //fecha0.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaRegistroEnv"));
-        //fecha1.setCellValueFactory(new PropertyValueFactory<Envio,String>("fechaEntregaEnv"));
-        //pedido.setCellValueFactory(new PropertyValueFactory<Envio,String>("pedidoStrEnv"));
         ruta.setCellValueFactory(new PropertyValueFactory<Envio,String>("rutaEnv"));
         repartidor.setCellValueFactory(new PropertyValueFactory<Envio,String>("repartidorEnv"));
-        //servaciones.setCellValueFactory(new PropertyValueFactory<Envio,String>("observacionesEnv"));
         estado.setCellValueFactory(new PropertyValueFactory<Envio,String>("estadoEnv"));
         
         table.setItems(FXCollections.observableArrayList(envios));

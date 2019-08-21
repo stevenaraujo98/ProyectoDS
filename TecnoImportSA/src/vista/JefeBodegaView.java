@@ -41,9 +41,11 @@ public class JefeBodegaView extends BaseView{
                 case 1:
                     this.setTitle("Pedidos");
                     this.setCenter(new Label("Pedidos"));
+                    break;
                 case 2:
                     this.setTitle("Repartidores");
-                    this.setCenter(new Label("Repartidores"));
+                    this.setCenter(new InfoRepartidoresView());
+                    break;
                 default:
                     break;
             }
