@@ -6,11 +6,8 @@
 package vista;
 
 import controlador.ConexionDB;
-import controlador.JefeBodegaController;
-import dbmanager.Procedure;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import modelo.Envio;
 
 /**
  *

@@ -235,6 +235,16 @@ values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 4, "direccio
 call buscarRutas;
 
 DELIMITER //
+CREATE procedure empleadosByIDLocal(in nombreLocal varchar(50))
+	begin
+		select e.cedula, e.nombres, e.apellidos, e.telefono, e.salario, e.email, e.id_local, e.tipo_empleado from Empleados e 
+        inner join Locales l on e.id_local = l.id_local where l.nombre = nombreLocal ;
+end //
+DELIMITER ;
+
+call empleadosByIDLocal("Tecno Import S.A.");
+
+DELIMITER //
 CREATE procedure productoPorLocal(in idLocal integer)
 	begin
 		select a.id_articulo, a.precio, a.nombre, a.descripcion, c.id_categoria, c.nombre, c.descripcion, la.cantidad 
