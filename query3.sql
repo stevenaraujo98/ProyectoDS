@@ -274,3 +274,43 @@ create procedure buscarRutasFiltradas(in filtro varchar(20))
         where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs and (char(e.id_ruta) like pattern or lower(e.direccion) like pattern or lower(r.nombres) like pattern or lower(r.apellidos) like pattern or lower(o.descripcion) like pattern);
 	end //
 DELIMITER ;
+
+drop procedure if exists obtenerRepartidores;
+DELIMITER //
+create procedure obtenerRepartidores()
+	begin		
+  		select * from Repartidores r;
+	end //
+DELIMITER ;
+
+
+drop procedure if exists obtenerEstados;
+DELIMITER //
+create procedure obtenerEstados()
+	begin
+		select * from Observaciones o where o.id_obs<=3 and eliminado=0;
+	end //
+DELIMITER ;
+
+drop procedure if exists buscarRutasFiltradas;
+DELIMITER //
+create procedure buscarRutasFiltradas(in filtro varchar(20))
+	begin
+		declare pattern char;
+        set @pattern = concat(lower(filtro),'%');
+		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
+        from Envios e, Repartidores r, Observaciones o
+        where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs and (char(e.id_ruta) like @pattern or lower(e.direccion) like @pattern or lower(r.nombres) like @pattern or lower(r.apellidos) like @pattern or lower(o.descripcion) like @pattern);
+	end //
+DELIMITER ;
+
+drop procedure if exists obtenerRepartidoresFiltrar;
+DELIMITER //
+create procedure obtenerRepartidoresFiltrar(in filtro varchar(50))
+	begin
+		declare pattern char;
+        set @pattern = concat(lower(filtro),"%");
+  		select * from Repartidores r where id_repartidor like @pattern or cedula like @pattern or nombres like @pattern or apellidos like @pattern or telefono like @pattern
+        or direccion like @pattern or email like @pattern;
+	end //
+DELIMITER ;
