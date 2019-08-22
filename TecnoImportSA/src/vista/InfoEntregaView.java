@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.JefeBodegaController;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;

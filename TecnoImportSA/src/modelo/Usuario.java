@@ -60,8 +60,8 @@ public class Usuario extends Empleado {
             ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
             if(rs == null) return null;
             if(rs.next()){
-                int id_user = rs.getInt(1);
-                Procedure pro2 = new Procedure("empleadoByUserID").addValue(id_user); 
+                int idUser = rs.getInt(1);
+                Procedure pro2 = new Procedure("empleadoByUserID").addValue(idUser); 
                 ResultSet rs2 = ConexionDB.getInstance().executeProcedureResult(pro2);
                 if(rs2 == null) return null;
                 Empleado e = null;
@@ -71,7 +71,7 @@ public class Usuario extends Empleado {
                             rs2.getDouble(7), rs2.getInt(9));
                 }
                 if(e != null){
-                    return selectReuturn(rs2.getInt(8), id_user, rs.getString(2), rs.getString(3), e); 
+                    return selectReuturn(rs2.getInt(8), idUser, rs.getString(2), rs.getString(3), e); 
                 }
             }
         } catch (SQLException ex) {

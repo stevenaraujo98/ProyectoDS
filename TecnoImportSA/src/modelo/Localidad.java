@@ -9,6 +9,7 @@ import controlador.ConexionDB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,16 +21,16 @@ public abstract class Localidad {
     protected int idLcld;
     protected String nombreLcld;
     protected String direccionLcld;
-    protected String Telefono;
+    protected String telefono;
     protected Admin admin;
     protected ArrayList<InventarioDetalle> inventario;
     protected ArrayList<Empleado> empleados;
             
-    public Localidad(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
+    public Localidad(int idLcld, String nombreLcld, String direccionLcld, String telefono) {
         this.idLcld = idLcld;
         this.nombreLcld = nombreLcld;
         this.direccionLcld = direccionLcld;
-        this.Telefono = Telefono;
+        this.telefono = telefono;
     }
 
     public int getIdLcld() {
@@ -57,11 +58,11 @@ public abstract class Localidad {
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+        this.telefono = Telefono;
     }
     
     public Admin getAdmin(){
@@ -72,16 +73,12 @@ public abstract class Localidad {
         this.admin = a;
     }
     
+    @Override
     public String toString(){
         return this.nombreLcld;
     }
     
-    public static Localidad getLocalByID(int id){
-        
-        return null; 
-    }
-    
-    public static ArrayList<Localidad> getLocales(){
+    public static List<Localidad> getLocales(){
         String query = "select * from Locales";
         ArrayList<Localidad> locales = new ArrayList<>();
         try {

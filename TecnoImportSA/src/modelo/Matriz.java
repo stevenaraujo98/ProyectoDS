@@ -11,11 +11,8 @@ package modelo;
  */
 public class Matriz extends Localidad{
     
-    //private ArrayList<Vendedor> vendedores;
-    //private Gerente gerente;
-    
-    public Matriz(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
-        super(idLcld, nombreLcld, direccionLcld, Telefono);
+    public Matriz(int idLcld, String nombreLcld, String direccionLcld, String telefono) {
+        super(idLcld, nombreLcld, direccionLcld, telefono);
     }
     
     

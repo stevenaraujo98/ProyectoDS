@@ -6,15 +6,12 @@
 package modelo;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  *
  * @author 
  */
 public class PedidoVenta extends Pedido{
-    private ArrayList<Producto> productosPdoVnt;
-    private double recargoPdoVnt;
 
     public PedidoVenta(int idPdo, LocalDateTime fechaPdo) {
         super(idPdo, fechaPdo);

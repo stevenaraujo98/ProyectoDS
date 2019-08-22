@@ -1,6 +1,3 @@
-﻿alter table Clientes
-add column email varchar(80);
-
 INSERT into Clientes(cedula,nombres,apellidos,domicilio,telefono,email)
 values("0923414561", "Juan Antonio", "Rodriguez Catro", "domicilio1", "0912345112", "juroca@outlook.com");
 INSERT into Clientes(cedula,nombres,apellidos,domicilio,telefono,email)
@@ -55,10 +52,10 @@ insert into Articulos(precio,descripcion,categoria,nombre)values(569.95, "Mucho 
 insert into Usuarios (username, userpass) values('jordi', aes_encrypt("jefeb1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
-values("0952214550", "Jordi", "Villao", "0934905040", 440, 4, 2, "direccion1", "jvillao@espol.edu.ec");
+values("0952214550", "Jordi", "Villao", "0934905040", 440, 4, 3, "direccion1", "jvillao@espol.edu.ec");
 insert into Usuarios (username, userpass) values('saraujo', aes_encrypt("vendedor1", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
-values("0942230367", "Steven", "Araujo Moran", "0975431414", 440, 3, 3, "direccion2", "saraujo@espol.edu.ec");
+values("0942230367", "Steven", "Araujo Moran", "0975431414", 440, 3, 4, "direccion2", "saraujo@espol.edu.ec");
 
 insert into Repartidores (cedula,disponible,nombres,apellidos,telefono,salario,direccion,email)
 values("0945567245", true, "Cesar", "Vera", "0930061021", 300, "direccion3", "cssvera@espol.edu.ec");
@@ -198,9 +195,10 @@ update Articulos
 set categoria = 6
 where id_articulo = 7;
 
+
 DELIMITER //
 CREATE procedure buscarProductos(in idLocal integer, nombre varchar(50), descr varchar(100), idCat integer)
-
+	begin
 		select T.id_articulo, T.nombre, T.descripcion, T.precio, T.cantidad, c.id_categoria, c.nombre, c.descripcion, tl.nombre
         from Categorias c, Tipo_local tl, 
 			(select a.id_articulo, a.nombre, a.descripcion, a.precio, a.categoria, la.cantidad, l.tipo_local from Articulos a, LocalArticulo la, Locales l
@@ -208,9 +206,8 @@ CREATE procedure buscarProductos(in idLocal integer, nombre varchar(50), descr v
             where T.categoria = c.id_categoria and T.tipo_local = tl.id_tipo and (T.categoria = idCat or INSTR(T.nombre,nombre)>0 or INSTR(T.descripcion,descr)>0);
 	end //
 DELIMITER ;
-drop procedure buscarProductos;
-call buscarProductos(1, "null", "pulgadas", 0);
 
+call buscarProductos(1, "null", "pulgadas", 0);
 
 DELIMITER //
 
@@ -222,6 +219,7 @@ insert into Envios(direccion, id_repartidor,tipo_entrega, id_observacion, elimin
 insert into Envios(direccion, id_repartidor,tipo_entrega, id_observacion, eliminado) values('Juan Montalvo',3,1,3,0);
 
 CREATE procedure buscarRutas(id varchar(10))
+begin
 		select e.id_ruta, e.direccion, r.id_repartidor, r.disponible, r.cedula, r.nombres, r.apellidos, r.telefono, r.salario, r.direccion, r.email, o.id_obs, o.descripcion 
         from Envios e, Repartidores r, Observaciones o
         where e.id_repartidor = r.id_repartidor and e.id_observacion = o.id_obs;
@@ -230,9 +228,8 @@ DELIMITER ;
 
 insert into Usuarios (username, userpass) values('ssam', aes_encrypt("gerente", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
 insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
-values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 4, "direccion5", "saraujo@hotmail.com");
+values("0987654321", "Ricardo", "Bohorquez", "0954376543", 4402, 2, 5, "direccion5", "saraujo@hotmail.com");
 
-call buscarRutas;
 
 DELIMITER //
 CREATE procedure empleadosByIDLocal(in nombreLocal varchar(50))

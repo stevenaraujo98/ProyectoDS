@@ -82,7 +82,8 @@ CREATE TABLE Clientes
                 nombres VARCHAR(50),
                 apellidos VARCHAR(50),
                 domicilio VARCHAR(100),
-                telefono VARCHAR(15), 
+                telefono VARCHAR(15),
+                email varchar(80),
                 eliminado BOOL DEFAULT(false));
 
 CREATE TABLE Tarjetas

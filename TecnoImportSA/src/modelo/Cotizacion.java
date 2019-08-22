@@ -6,7 +6,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Cotizacion {
     private int idCtz;
     private LocalDateTime fechaCtz;
     private double totalCtz;
-    private ArrayList<DetalleVenta> detallesCtz;
+    private List<DetalleVenta> detallesCtz;
 
     public int getIdCtz() {
         return idCtz;
@@ -42,11 +42,11 @@ public class Cotizacion {
         this.totalCtz = totalCtz;
     }
 
-    public ArrayList<DetalleVenta> getDetallesCtz() {
+    public List<DetalleVenta> getDetallesCtz() {
         return detallesCtz;
     }
 
-    public void setDetallesCtz(ArrayList<DetalleVenta> detallesCtz) {
+    public void setDetallesCtz(List<DetalleVenta> detallesCtz) {
         this.detallesCtz = detallesCtz;
     }
     

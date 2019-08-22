@@ -59,10 +59,6 @@ public class GerenteView extends BaseView{
                             }
                         }
                         break;
-                        //                case 1:
-//                    this.setTitle("Usuarios");
-//                    this.setCenter(listUsers());  
-//                    break;
                     default:
                         break;
                 }

@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Bodega extends Localidad{
     private JefeBodega jefeBodega;
 
-    public Bodega(int idLcld, String nombreLcld, String direccionLcld, String Telefono) {
-        super(idLcld, nombreLcld, direccionLcld, Telefono);
+    public Bodega(int idLcld, String nombreLcld, String direccionLcld, String telefono) {
+        super(idLcld, nombreLcld, direccionLcld, telefono);
     }
     
     public JefeBodega getJefeBodega(){

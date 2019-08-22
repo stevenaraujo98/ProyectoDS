@@ -6,7 +6,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Venta {
     private int idVnt;
     private LocalDateTime fechaVnt;
     private double total;
-    private ArrayList<DetalleVenta> detallesVnt;
+    private List<DetalleVenta> detallesVnt;
     
     public double getTotal() {
         return total;
@@ -42,21 +42,11 @@ public class Venta {
         this.fechaVnt = fechaVnt;
     }
 
-    public ArrayList<DetalleVenta> getDetallesVnt() {
+    public List<DetalleVenta> getDetallesVnt() {
         return detallesVnt;
     }
 
-    public void setDetallesVnt(ArrayList<DetalleVenta> detallesVnt) {
+    public void setDetallesVnt(List<DetalleVenta> detallesVnt) {
         this.detallesVnt = detallesVnt;
-    }
-    
-    public void enviarFacturaElectronica(){
-        
-    }
-    
-    public void calcularTotal(){
-        
-    }
-
-    
+    }    
 }
