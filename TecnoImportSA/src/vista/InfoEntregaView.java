@@ -89,8 +89,6 @@ public class InfoEntregaView extends BorderPane{
     public void setActionEditar(){
         editar.setOnAction(value -> {
             if(table.getSelectionModel().getSelectedItem() != null ){
-                Envio e = table.getSelectionModel().getSelectedItem();
-                //e.setEstadoEnv();
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Error!!!");
@@ -106,7 +104,6 @@ public class InfoEntregaView extends BorderPane{
         buscar.setOnKeyPressed(kEvent -> {
             if(!buscar.getText().isEmpty()){
                 String filter = buscar.getText();
-                System.out.println(filter);
                 fillTable(JefeBodegaController.getEnviosFiltered(filter));
             }else{
                 fillTable(JefeBodegaController.getEnvios());

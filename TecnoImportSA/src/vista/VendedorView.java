@@ -40,6 +40,7 @@ public class VendedorView extends BaseView{
     
     private Vendedor vendedor;
     private VBox listado;
+    private static final String url = "/recursos/icons/user.png";
     
     public VendedorView(Vendedor vendedor){
         this.vendedor = vendedor;
@@ -52,11 +53,11 @@ public class VendedorView extends BaseView{
         this.setTitleHome("VENDEDOR");
         this.setSubtitleHome(vendedor.getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Productos", 
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Venta",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Cotizacion",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().setOnAction(e -> {
             switch(this.getMenu().getItemSelected()){
                 case 0:
@@ -65,11 +66,11 @@ public class VendedorView extends BaseView{
                     break;
                 case 1:
                     this.setTitle("Venta");
-                    this.setCenter(new Label("Cotizacion")); 
+                    this.setCenter(new Label()); 
                     break;
                 case 2:
                     this.setTitle("Cotizacion");
-                    this.setCenter(new Label("Cotizacion")); 
+                    this.setCenter(new Label()); 
                     break;
                 default:
                     break;
@@ -120,8 +121,6 @@ public class VendedorView extends BaseView{
         VBox vista = new VBox(40);
         vista.setPadding(new Insets(30, 30, 30, 30)); 
         vista.setAlignment(Pos.CENTER); 
-        System.out.println(vendedor.getIdLocal());
-        System.out.println(vendedor.getNombres());
         try {
             ResultSet result = ConexionDB.getInstance(). 
                     executeProcedureResult(new Procedure("localByID").addValue(vendedor.getIdLocal()));

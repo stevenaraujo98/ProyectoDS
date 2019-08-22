@@ -16,6 +16,7 @@ import vista.basescreen.*;
  */
 public class JefeBodegaView extends BaseView{
     private Bodega bodega;
+    private static final String url = "/recursos/icons/user.png";
     
     public JefeBodegaView(Bodega bodega){
         this.bodega = bodega;
@@ -27,11 +28,11 @@ public class JefeBodegaView extends BaseView{
         this.setTitleHome("JefeBodega");
         this.setSubtitleHome(bodega.getJefeBodega().getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Envios", 
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Pedidos",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Repartidores",  
-                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
         this.getMenu().setOnAction(e -> {
             switch(this.getMenu().getItemSelected()){
                 case 0:

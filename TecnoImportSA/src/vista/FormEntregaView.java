@@ -7,6 +7,7 @@ package vista;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -31,7 +32,6 @@ public class FormEntregaView {
     private ComboBox<PedidoAbastecimiento> pedido;
     private TextArea observaciones;
     private Button guardar;
-    private boolean b;
     
     public GridPane getRoot(){
         return this.root;
@@ -83,9 +83,11 @@ public class FormEntregaView {
         guardar.setOnAction(value -> {
             if(notEmptyFields()){
                 //update tableview & push query
-                b = true;                
             }else{
-                b = false;
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("Existen campos vacios");
+                a.setTitle("Error");
+                a.show();
             } 
         });
     }

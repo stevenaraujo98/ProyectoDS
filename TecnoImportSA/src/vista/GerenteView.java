@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -28,7 +27,6 @@ import vista.basescreen.ItemView;
 public class GerenteView extends BaseView{
     
     private Gerente gerente;
-    private VBox listado;
     FXMLLoader loader;
     
     public GerenteView(Gerente gerente){
@@ -42,14 +40,12 @@ public class GerenteView extends BaseView{
         this.setSubtitleHome(gerente.getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Asignar Administrador", 
                     new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
-//        this.getMenu().addItemView(new ItemView("Usuarios",  
-//                    new Image(AdminView.class.getResourceAsStream("/recursos/icons/user.png"), 30, 30, true, true)));
         this.getMenu().setOnAction(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                switch (GerenteView.this.getMenu().getItemSelected()) {
-                    case 0:
-                        GerenteView.this.setTitle("Asignar Administrador");
+                int value = GerenteView.this.getMenu().getItemSelected();
+                if(value == 0){
+                     GerenteView.this.setTitle("Asignar Administrador");
                         loader = new FXMLLoader(GerenteView.this.getClass().getResource("/vista/AsignacionAdmin.fxml"));
                         {
                             try {
@@ -58,9 +54,6 @@ public class GerenteView extends BaseView{
                                 Logger.getLogger(GerenteView.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
-                        break;
-                    default:
-                        break;
                 }
             }
         }); 
@@ -71,13 +64,5 @@ public class GerenteView extends BaseView{
             this.close();
             LoginView.open();
         });
-    }
-    
-    private Pane listUsers(){
-        VBox lista = new VBox(10);
-        lista.setPadding(new Insets(30, 30, 30, 30)); 
-        lista.getChildren().add(new Text("Usuario ..."));
-
-        return lista;
     }
 }

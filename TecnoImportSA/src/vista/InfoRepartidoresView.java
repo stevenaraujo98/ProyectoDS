@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.JefeBodegaController;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Label;
@@ -16,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import modelo.Envio;
 import modelo.Repartidor;
 
 /**
@@ -64,7 +62,6 @@ public class InfoRepartidoresView extends BorderPane{
         buscar.setOnKeyPressed(kEvent -> {
             if(!buscar.getText().isEmpty()){
                 String filter = buscar.getText();
-                System.out.println(filter);
                 fillTable(JefeBodegaController.getRepartidores(filter));
             }else{
                 fillTable(JefeBodegaController.getRepartidores(""));
