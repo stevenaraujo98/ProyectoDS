@@ -35,21 +35,21 @@ public class AsignacionAdminController implements Initializable {
     @FXML
     TableView<Empleado> tabla;
     @FXML
-    TableColumn<Empleado, String> columna_cedula;
+    TableColumn<Empleado, String> columnaCedula;
     @FXML
-    TableColumn<Empleado, String> columna_nombres;
+    TableColumn<Empleado, String> columnaNombres;
     @FXML
-    TableColumn<Empleado, String> columna_apellidos;
+    TableColumn<Empleado, String> columnaApellidos;
     @FXML
-    TableColumn<Empleado, String> columna_telefono;
+    TableColumn<Empleado, String> columnaTelefono;
     @FXML
-    TableColumn<Empleado, Double> columna_salario;
+    TableColumn<Empleado, Double> columnaSalario;
     @FXML
-    TableColumn<Empleado, String> columna_email;
+    TableColumn<Empleado, String> columnaEmail;
     @FXML
-    TableColumn<Empleado, Integer> columna_idlocal;    
+    TableColumn<Empleado, Integer> columnaIdlocal;    
     @FXML
-    TableColumn<Empleado, Integer> columna_tipoempleado;
+    TableColumn<Empleado, Integer> columnaTipoempleado;
     @FXML
     ComboBox<String> combolocales;
     @FXML
@@ -63,13 +63,13 @@ public class AsignacionAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        columna_cedula.setCellValueFactory(new PropertyValueFactory<>("dni"));
-        columna_nombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
-        columna_apellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
-        columna_telefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        columna_salario.setCellValueFactory(new PropertyValueFactory<>("sueldo"));
-        columna_email.setCellValueFactory(new PropertyValueFactory<>("correo"));
-        columna_tipoempleado.setCellValueFactory(new PropertyValueFactory<>("tipoDeEmpleado"));
+        columnaCedula.setCellValueFactory(new PropertyValueFactory<>("dni"));
+        columnaNombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
+        columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+        columnaTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        columnaSalario.setCellValueFactory(new PropertyValueFactory<>("sueldo"));
+        columnaEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        columnaTipoempleado.setCellValueFactory(new PropertyValueFactory<>("tipoDeEmpleado"));
         cargarDatos();
     }    
         

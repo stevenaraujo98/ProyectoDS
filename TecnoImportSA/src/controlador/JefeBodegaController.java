@@ -8,9 +8,9 @@ package controlador;
 import dbmanager.Procedure;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.*;
@@ -31,17 +31,17 @@ public class JefeBodegaController {
         this.colaRepartidores = bodega.getRepartidores();
     }
     
-    public static ArrayList<Envio> getEnvios(){
+    public static List<Envio> getEnvios(){
         ArrayList<Envio> envios = new ArrayList();
         Procedure pro = new Procedure("buscarRutas").noArguments();
         try{
             ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
-            if(rs == null) return null;
+            if(rs == null) return envios;
             while(rs.next()){ 
                 envios.add(constructEnvio(rs));
             }
-        }catch(Exception ex){
-            ex.printStackTrace();
+        }catch(SQLException ex){
+            Logger.getLogger(JefeBodegaController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return envios;
     }
@@ -62,22 +62,22 @@ public class JefeBodegaController {
         return e;
     }
     
-    public static ArrayList<Envio> getEnviosFiltered(String filter){
+    public static List<Envio> getEnviosFiltered(String filter){
         ArrayList<Envio> envios = new ArrayList();
         Procedure pro = new Procedure("buscarRutasFiltradas").addValue(filter);
         try{
             ResultSet rs = ConexionDB.getInstance().executeProcedureResult(pro);
-            if(rs == null) return null;
+            if(rs == null) return envios;
             while(rs.next()){ 
                 envios.add(constructEnvio(rs));
             }
-        }catch(Exception ex){
-            ex.printStackTrace();
+        }catch(SQLException ex){
+            Logger.getLogger(JefeBodegaController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return envios;
     }
     
-    public static ArrayList<Estado> getEstados(){
+    public static List<Estado> getEstados(){
         ArrayList<Estado> estados = new ArrayList();
         Procedure pro = new Procedure("obtenerEstados").noArguments();
         try{
@@ -91,9 +91,9 @@ public class JefeBodegaController {
         return estados;
     }
     
-    public static ArrayList<Repartidor> getRepartidores(String filter){
+    public static List<Repartidor> getRepartidores(String filter){
         ArrayList<Repartidor> repartidores = new ArrayList();
-        Procedure pro = null;
+        Procedure pro;
         if(filter.isEmpty())
             pro = new Procedure("obtenerRepartidores").noArguments();
         else 
@@ -109,7 +109,7 @@ public class JefeBodegaController {
         return repartidores;
     } 
     
-    public static ArrayList<PedidoAbastecimiento> getAbastecimientos(){
+    public static List<PedidoAbastecimiento> getAbastecimientos(){
         ArrayList<PedidoAbastecimiento> abastecimientos = new ArrayList();
         Procedure pro = new Procedure("obtenerAbastecimientos").noArguments();
         try{
@@ -122,5 +122,31 @@ public class JefeBodegaController {
         }
         return abastecimientos;
     }
+
+    public JefeBodegaView getBodegaView() {
+        return bodegaView;
+    }
+
+    public void setBodegaView(JefeBodegaView bodegaView) {
+        this.bodegaView = bodegaView;
+    }
+
+    public Bodega getBodega() {
+        return bodega;
+    }
+
+    public void setBodega(Bodega bodega) {
+        this.bodega = bodega;
+    }
+
+    public ArrayList<Repartidor> getColaRepartidores() {
+        return colaRepartidores;
+    }
+
+    public void setColaRepartidores(ArrayList<Repartidor> colaRepartidores) {
+        this.colaRepartidores = colaRepartidores;
+    }
+    
+    
 }
 

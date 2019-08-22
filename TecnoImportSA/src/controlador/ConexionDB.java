@@ -13,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -23,8 +25,8 @@ public class ConexionDB {
     /**
      * Instancia de la conexión a la base de datos
      */
-    private final static ConexionDB instance = new ConexionDB();
-    private final String SCHEME = "jdbc:mysql";
+    private final static ConexionDB INSTANCE = new ConexionDB();
+    private final static String SCHEME = "jdbc:mysql";
     private Connection connection;
     
     private ConexionDB() {
@@ -36,7 +38,7 @@ public class ConexionDB {
      * @return MyConnection
      */
     public static ConexionDB getInstance(){
-        return instance;
+        return INSTANCE;
     }
     
     /**
@@ -59,7 +61,6 @@ public class ConexionDB {
      * @return - True si se logró crear la conexión, false en caso contrario
      */
     public boolean connect(String db, String user, String pass, String query){
-        //return connect("192.168.99.100", 3306, db, user, pass, query);
         return connect("localhost", 3306, db, user, pass, query);
     }
     
@@ -81,7 +82,7 @@ public class ConexionDB {
             connection = DriverManager.getConnection(uri.toString(), user, pass);
             return true;
         } catch (ClassNotFoundException | SQLException | URISyntaxException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -121,7 +122,7 @@ public class ConexionDB {
     }
     
     public Connection getConnection(){
-        return instance.connection;
+        return INSTANCE.connection;
     }
     
     

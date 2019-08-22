@@ -24,8 +24,8 @@ public class MenuDrawing extends VBox {
     
     private ItemView[] items;
     private double widht;
-    private final double SIZE_ITEM = 30;
-    private final double space = 20;
+    private static final double SIZE_ITEM = 30;
+    private static final double SPACE = 20;
     private ImageView drawButton;
     private ItemView itemSelected;
     private boolean close;
@@ -36,8 +36,6 @@ public class MenuDrawing extends VBox {
         this.items = items;
         widht = 0;
         close = false;
-        //double size = items[0].getIcon().getWidth();
-        //SIZE_ITEM = 30;
         drawButton = new ImageView(
                 new Image(MenuDrawing.class.getResourceAsStream("/recursos/icons/drawLine.png"), 30, 30, true, true));
         adapterMenu();
@@ -48,7 +46,7 @@ public class MenuDrawing extends VBox {
         Rectangle background = new Rectangle(drawButton.getImage().getWidth(), drawButton.getImage().getHeight());
         background.setFill(Color.rgb(242, 242, 242));
         StackPane drawing = new StackPane(background, drawButton);
-        drawContent = new Rectangle(this.widht + space*2 + SIZE_ITEM, SIZE_ITEM);
+        drawContent = new Rectangle(this.widht + SPACE*2 + SIZE_ITEM, SIZE_ITEM);
         drawContent.setFill(Color.rgb(242, 242, 242));
         drawing.setAlignment(Pos.CENTER_RIGHT);
         
@@ -78,9 +76,9 @@ public class MenuDrawing extends VBox {
         
         for(ItemView iv: items) {
             double w = iv.getItem().getBoundsInLocal().getWidth();
-            double spacing = (max - w) + space; 
+            double spacing = (max - w) + SPACE; 
             iv.setSpacing(spacing);
-            iv.adapterObject(max + space*2 + SIZE_ITEM, SIZE_ITEM);
+            iv.adapterObject(max + SPACE*2 + SIZE_ITEM, SIZE_ITEM);
             addEventSelected(iv);
         }
         if(max != Double.MIN_VALUE)
@@ -171,7 +169,7 @@ public class MenuDrawing extends VBox {
     }
     
     public double getMenuWidth() {
-        return this.widht + space*2 + SIZE_ITEM;
+        return this.widht + SPACE*2 + SIZE_ITEM;
     }
     
     public boolean isClose() {

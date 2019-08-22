@@ -7,6 +7,7 @@ package vista;
 
 import controlador.JefeBodegaController;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -59,7 +60,7 @@ public class InfoEntregaView extends BorderPane{
     }
     
     
-    public void fillTable(ArrayList<Envio> envios){
+    public void fillTable(List<Envio> envios){
         table.getColumns().clear();
         table.getItems().clear();
         TableColumn<Envio, String> id = new TableColumn("ID");

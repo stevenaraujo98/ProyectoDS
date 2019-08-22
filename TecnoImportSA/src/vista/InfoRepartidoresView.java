@@ -7,6 +7,7 @@ package vista;
 
 import controlador.JefeBodegaController;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -41,7 +42,7 @@ public class InfoRepartidoresView extends BorderPane{
         fillTable(JefeBodegaController.getRepartidores(""));
     }
     
-    public void fillTable(ArrayList<Repartidor> repartidores){
+    public void fillTable(List<Repartidor> repartidores){
         table.getColumns().clear();
         table.getItems().clear();
         TableColumn<Repartidor, String> dni = new TableColumn("DNI");

@@ -25,7 +25,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import modelo.Admin;
 import modelo.Categoria;
 import modelo.Localidad;
 import modelo.Producto;
@@ -37,9 +36,7 @@ import vista.AdminView;
  * @author 
  */
 public class AdminController implements Initializable{
-    private ObservableList<Stock> list;
     private AdminView adminview;
-    private Admin admin;
     @FXML
     private AnchorPane root;
     @FXML
@@ -106,6 +103,7 @@ public class AdminController implements Initializable{
     } 
     
     private void loadList(ResultSet rs) throws SQLException{
+        ObservableList<Stock> list;
         list = FXCollections.observableArrayList();
         if(rs != null){
             while(rs.next()){
@@ -118,11 +116,6 @@ public class AdminController implements Initializable{
         stocks.setItems(list); 
     }
     
-    
-    /*public AdminController(AdminView adminview, Admin admin){
-        this.adminview = adminview;
-        this.admin = admin;
-    }*/
     
     public void crearNuevoRegistro(){
         //funcionalidad en construccion 

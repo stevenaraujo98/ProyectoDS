@@ -32,7 +32,6 @@ public class LoginController implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
         Usuario usuario = this.validarUsuario(login.getUser(), login.getPass());
         if(usuario != null){
-            System.out.println("Hola " + usuario.getNombres() + " " + usuario.getClass() + " "  + usuario.getClave());
             login.close();
             if(usuario instanceof Admin){
                 AdminView admin = new AdminView((Admin)usuario);
