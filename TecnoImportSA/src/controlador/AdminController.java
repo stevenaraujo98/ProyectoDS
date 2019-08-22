@@ -30,6 +30,7 @@ import modelo.Localidad;
 import modelo.Producto;
 import modelo.Stock;
 import vista.AdminView;
+import java.util.List;
 
 /**
  *
@@ -133,7 +134,7 @@ public class AdminController implements Initializable{
         //funcionalidad en construccion
     }
     
-    public ArrayList<Producto> consultarProducto(String nombre){
+    public List<Producto> consultarProducto(String nombre){
         Procedure proc = new Procedure("productosPorNombre").addValue(nombre); 
         ArrayList<Producto> productos = new ArrayList<>();
         try {

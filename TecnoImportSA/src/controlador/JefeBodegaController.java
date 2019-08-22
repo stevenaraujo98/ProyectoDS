@@ -23,7 +23,7 @@ import vista.JefeBodegaView;
 public class JefeBodegaController {
     private JefeBodegaView bodegaView;
     private Bodega bodega;
-    private ArrayList<Repartidor> colaRepartidores;
+    private List<Repartidor> colaRepartidores;
     
     public JefeBodegaController(JefeBodegaView bodegaView, Bodega bodega){
         this.bodegaView = bodegaView;
@@ -139,11 +139,11 @@ public class JefeBodegaController {
         this.bodega = bodega;
     }
 
-    public ArrayList<Repartidor> getColaRepartidores() {
+    public List<Repartidor> getColaRepartidores() {
         return colaRepartidores;
     }
 
-    public void setColaRepartidores(ArrayList<Repartidor> colaRepartidores) {
+    public void setColaRepartidores(List<Repartidor> colaRepartidores) {
         this.colaRepartidores = colaRepartidores;
     }
     

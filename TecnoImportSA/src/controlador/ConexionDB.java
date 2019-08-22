@@ -25,8 +25,8 @@ public class ConexionDB {
     /**
      * Instancia de la conexión a la base de datos
      */
-    private final static ConexionDB INSTANCE = new ConexionDB();
-    private final static String SCHEME = "jdbc:mysql";
+    private static final ConexionDB INSTANCE = new ConexionDB();
+    private static final String SCHEME = "jdbc:mysql";
     private Connection connection;
     
     private ConexionDB() {

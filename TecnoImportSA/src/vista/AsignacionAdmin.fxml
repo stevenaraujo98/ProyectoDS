@@ -15,13 +15,13 @@
    <children>
       <TableView fx:id="tabla" layoutX="14.0" layoutY="66.0" prefHeight="327.0" prefWidth="1006.0">
         <columns>
-            <TableColumn fx:id="columna_cedula" prefWidth="135.0" text="Dni" />
-          <TableColumn fx:id="columna_nombres" prefWidth="126.0" text="Nombres" />
-            <TableColumn fx:id="columna_apellidos" prefWidth="129.0" text="Apellidos" />
-            <TableColumn fx:id="columna_telefono" prefWidth="141.0" text="Telefono" />
-            <TableColumn fx:id="columna_salario" prefWidth="96.0" text="Salario" />
-            <TableColumn fx:id="columna_email" prefWidth="215.0" text="Email" />
-            <TableColumn fx:id="columna_tipoempleado" prefWidth="112.0" text="Tipo de Empleado" />
+            <TableColumn fx:id="columnaCedula" prefWidth="135.0" text="Dni" />
+          <TableColumn fx:id="columnaNombres" prefWidth="126.0" text="Nombres" />
+            <TableColumn fx:id="columnaApellidos" prefWidth="129.0" text="Apellidos" />
+            <TableColumn fx:id="columnaTelefono" prefWidth="141.0" text="Telefono" />
+            <TableColumn fx:id="columnaSalario" prefWidth="96.0" text="Salario" />
+            <TableColumn fx:id="columnaEmail" prefWidth="215.0" text="Email" />
+            <TableColumn fx:id="columnaTipoempleado" prefWidth="112.0" text="Tipo de Empleado" />
         </columns>
       </TableView>
       <Button fx:id="botonasignar" layoutX="1076.0" layoutY="66.0" mnemonicParsing="false" text="Asignar" />

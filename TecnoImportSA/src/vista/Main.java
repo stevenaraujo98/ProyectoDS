@@ -19,7 +19,7 @@ public class Main extends Application{
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         //ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
         //ConexionDB.getInstance().connect("SistemaVentasBD", "root", "volksWAGEN1", query);
-        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
     }
     
     @Override
