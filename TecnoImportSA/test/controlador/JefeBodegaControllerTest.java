@@ -19,7 +19,7 @@ public class JefeBodegaControllerTest {
     @Test
     public void testGetAbastecimientosSinAbastecimientos(){
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "volksWAGEN1", query);
+        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
         assertNotNull(JefeBodegaController.getAbastecimientos());
     }
     
@@ -28,7 +28,7 @@ public class JefeBodegaControllerTest {
     @Test
     public void testGetEnvios(){
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "volksWAGEN1", query);
+        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
         assertTrue(JefeBodegaController.getEstados().size() > 0);
     }
     
@@ -38,7 +38,7 @@ public class JefeBodegaControllerTest {
     @Test
     public void testGetTrRepartidores(){
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "volksWAGEN1", query);
+        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
         assertTrue(JefeBodegaController.getRepartidores("").size() > 0);
     }
            
