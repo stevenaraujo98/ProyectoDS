@@ -40,7 +40,7 @@ public class VendedorView extends BaseView{
     
     private Vendedor vendedor;
     private VBox listado;
-    private static final String urlS = "/recursos/icons/user.png";
+    private static final String URL = "/recursos/icons/user.png";
     
     public VendedorView(Vendedor vendedor){
         this.vendedor = vendedor;
@@ -53,11 +53,11 @@ public class VendedorView extends BaseView{
         this.setTitleHome("VENDEDOR");
         this.setSubtitleHome(vendedor.getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Productos", 
-                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(URL), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Venta",  
-                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(URL), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Cotizacion",  
-                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(URL), 30, 30, true, true)));
         this.getMenu().setOnAction(e -> {
             switch(this.getMenu().getItemSelected()){
                 case 0:

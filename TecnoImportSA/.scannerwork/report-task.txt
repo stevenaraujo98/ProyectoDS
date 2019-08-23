@@ -2,5 +2,5 @@ projectKey=P02G06
 serverUrl=http://200.126.12.164
 serverVersion=6.7.6.38781
 dashboardUrl=http://200.126.12.164/dashboard/index/P02G06
-ceTaskId=AWy6MZacLm5p6v1cuI3x
-ceTaskUrl=http://200.126.12.164/api/ce/task?id=AWy6MZacLm5p6v1cuI3x
+ceTaskId=AWy8KpWRLm5p6v1cuI4E
+ceTaskUrl=http://200.126.12.164/api/ce/task?id=AWy8KpWRLm5p6v1cuI4E

@@ -43,12 +43,10 @@ public class GerenteView extends BaseView{
                 if(value == 0){
                      GerenteView.this.setTitle("Asignar Administrador");
                         loader = new FXMLLoader(GerenteView.this.getClass().getResource("/vista/AsignacionAdmin.fxml"));
-                        {
-                            try {
-                                GerenteView.this.setCenter(loader.load());
-                            }catch (IOException ex) {
-                                Logger.getLogger(GerenteView.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                        try {
+                            GerenteView.this.setCenter(loader.load());
+                        }catch (IOException ex) {
+                            Logger.getLogger(GerenteView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                 }
             }
