@@ -96,6 +96,7 @@ public class ConexionDB {
             return false;
         try {
             connection.close();
+            connection = null;
         } catch (SQLException ex) {
             return false;
         }
