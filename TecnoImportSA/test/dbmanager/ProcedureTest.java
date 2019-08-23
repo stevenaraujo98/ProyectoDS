@@ -13,8 +13,9 @@ import org.junit.Test;
  * @author SSAM
  */
 public class ProcedureTest {
+    
     /**
-     * 
+     * Test para verificar que al no añadir valor al procedure este objeto no se instancie como nulo.
      */
     @Test
     public void testNotNullAddValue(){
@@ -23,7 +24,7 @@ public class ProcedureTest {
     }
     
     /**
-     * 
+     * Test para verificar que el procedure tenga un valor correcto.
      */
     @Test
     public void testProcedureCorrect(){

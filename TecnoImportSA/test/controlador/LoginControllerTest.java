@@ -6,7 +6,6 @@
 package controlador;
 
 import modelo.Admin;
-import modelo.Gerente;
 import modelo.JefeBodega;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -20,7 +19,7 @@ public class LoginControllerTest {
     
     public LoginControllerTest() {
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
     }
     
     /**

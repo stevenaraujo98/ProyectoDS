@@ -13,10 +13,11 @@ import static org.junit.Assert.*;
  * @author Kenny Camba
  */
 public class AdminControllerTest {
+    private static final String PRODUCTO = "Xiaomi Redmi Note 7";
     
     public AdminControllerTest() {
         String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
     }
     
     /**
@@ -28,7 +29,7 @@ public class AdminControllerTest {
     @Test
     public void consultatProductoNoEmpty(){
         AdminController admin = new AdminController();
-        assertFalse(admin.consultarProducto("Xiaomi Redmi Note 7").isEmpty());
+        assertFalse(admin.consultarProducto(PRODUCTO).isEmpty());
     }
     
     /**
@@ -38,7 +39,7 @@ public class AdminControllerTest {
     @Test
     public void consultatProductoEquals(){
         AdminController admin = new AdminController();
-        assertTrue(admin.consultarProducto("Xiaomi Redmi Note 7").get(0).getNombrePrdct().equals("Xiaomi Redmi Note 7")); 
+        assertTrue(admin.consultarProducto(PRODUCTO).get(0).getNombrePrdct().equals(PRODUCTO)); 
         ConexionDB.getInstance().close();
     }
     

@@ -13,13 +13,16 @@ import static org.junit.Assert.*;
  * @author JordyVillao
  */
 public class JefeBodegaControllerTest {
+    private static final String IP = "192.168.99.100";
+    private static final String BASEDATOS = "SistemaVentasBD";
+    private static final String QUERY = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+     
     
     //Prueba que efectivamente el metodo no devuelva nulo para la coleccion
     //de datos del tipo abastecimiento
     @Test
     public void testGetAbastecimientosSinAbastecimientos(){
-        String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect(IP, 3306,BASEDATOS, "root", "root", QUERY);
         assertNotNull(JefeBodegaController.getAbastecimientos());
     }
     
@@ -27,8 +30,7 @@ public class JefeBodegaControllerTest {
     //especifica en getEnvios()
     @Test
     public void testGetEnvios(){
-        String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect(IP, 3306,BASEDATOS, "root", "root", QUERY);
         assertTrue(JefeBodegaController.getEstados().size() > 0);
     }
     
@@ -37,8 +39,7 @@ public class JefeBodegaControllerTest {
     //repartidores en la base
     @Test
     public void testGetTrRepartidores(){
-        String query = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        ConexionDB.getInstance().connect("192.168.99.100", 3306,"SistemaVentasBD", "root", "root", query);
+        ConexionDB.getInstance().connect(IP, 3306,BASEDATOS, "root", "root", QUERY);
         assertTrue(JefeBodegaController.getRepartidores("").size() > 0);
     }
            

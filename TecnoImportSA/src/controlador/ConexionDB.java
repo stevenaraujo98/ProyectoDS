@@ -82,6 +82,7 @@ public class ConexionDB {
             connection = DriverManager.getConnection(uri.toString(), user, pass);
             return true;
         } catch (ClassNotFoundException | SQLException | URISyntaxException ex) {
+            connection = null;
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
