@@ -105,14 +105,12 @@ public class AdminController implements Initializable{
     } 
     
     private void loadList(ResultSet rs) throws SQLException{
-        ObservableList<Stock> list;
-        list = FXCollections.observableArrayList();
+        ObservableList<Stock> list = FXCollections.observableArrayList();
         if(rs != null){
             while(rs.next()){
                 Categoria c = new Categoria(rs.getInt(5), rs.getString(6), rs.getString(7));
                 Producto p = new Producto(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getDouble(2), c);
-                Stock stock = new Stock(p, rs.getInt(8));
-                list.add(stock);
+                list.add(new Stock(p, rs.getInt(8)));
             }
         }
         stocks.setItems(list); 

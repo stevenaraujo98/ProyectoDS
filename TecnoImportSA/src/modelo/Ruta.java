@@ -67,6 +67,7 @@ public class Ruta {
         this.detallesRta = detallesRta;
     }
     
+    @Override
     public String toString(){
         return this.destinoRta;
     }
