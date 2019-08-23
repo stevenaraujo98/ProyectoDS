@@ -13,17 +13,13 @@ public abstract class Persona {
     protected String dni;
     protected String nombres;
     protected String apellidos;
-    protected String direccion;
-    protected String correo;
-    protected String telefono;
+    protected Contact contacto;
 
-    public Persona(String dni, String nombres, String apellidos, String direccion, String correo, String telefono) {
+    public Persona(String dni, String nombres, String apellidos, Contact contacto) {
         this.dni = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.direccion = direccion;
-        this.correo = correo;
-        this.telefono = telefono;
+        this.contacto = contacto;
     }
     
 
@@ -51,29 +47,13 @@ public abstract class Persona {
         this.apellidos = apellidos;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public Contact getContacto() {
+        return contacto;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setContacto(Contact contacto) {
+        this.contacto = contacto;
     }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    } 
     
     @Override
     public String toString(){

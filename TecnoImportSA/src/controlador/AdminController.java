@@ -31,6 +31,7 @@ import modelo.Producto;
 import modelo.Stock;
 import vista.AdminView;
 import java.util.List;
+import javafx.beans.property.SimpleObjectProperty;
 
 /**
  *
@@ -87,11 +88,11 @@ public class AdminController implements Initializable{
     }
     
     private void loadTable(){
-        idProducto.setCellValueFactory(new PropertyValueFactory<>("idPrdct"));
+        idProducto.setCellValueFactory((TableColumn.CellDataFeatures<Stock, Integer> param) -> new SimpleObjectProperty<>(param.getValue().getProducto().getIdPrdct()));
         cantidad.setCellValueFactory(new PropertyValueFactory<>("cant"));
-        producto.setCellValueFactory(new PropertyValueFactory<>("nombrePrdct"));
-        precio.setCellValueFactory(new PropertyValueFactory<>("precioActualPrdct"));
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        producto.setCellValueFactory((TableColumn.CellDataFeatures<Stock, String> param) -> new SimpleObjectProperty<>(param.getValue().getProducto().getNombrePrdct()));
+        precio.setCellValueFactory((TableColumn.CellDataFeatures<Stock, Double> param) -> new SimpleObjectProperty<>(param.getValue().getProducto().getPrecioActualPrdct()));
+        categoria.setCellValueFactory((TableColumn.CellDataFeatures<Stock, Categoria> param) -> new SimpleObjectProperty<>(param.getValue().getProducto().getCategoria()));
         locales.setOnAction(e->{
             Localidad loc = locales.getSelectionModel().getSelectedItem();
             Procedure p = new Procedure("productoPorLocal").addValue(loc.getIdLcld());

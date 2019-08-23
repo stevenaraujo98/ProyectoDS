@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -59,15 +60,17 @@ public class AsignacionAdminController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         columnaCedula.setCellValueFactory(new PropertyValueFactory<>("dni"));
         columnaNombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
         columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
-        columnaTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        columnaTelefono.setCellValueFactory((TableColumn.CellDataFeatures<Empleado, String> param) -> new SimpleObjectProperty<>(param.getValue().getContacto().getTelefono()));
         columnaSalario.setCellValueFactory(new PropertyValueFactory<>("sueldo"));
-        columnaEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        columnaEmail.setCellValueFactory((TableColumn.CellDataFeatures<Empleado, String> param) -> new SimpleObjectProperty<>(param.getValue().getContacto().getCorreo()));
         columnaTipoempleado.setCellValueFactory(new PropertyValueFactory<>("tipoDeEmpleado"));
         cargarDatos();
     }    
@@ -108,7 +111,6 @@ public class AsignacionAdminController implements Initializable {
             Double salario  = (double)resultado.getFloat(5);
             String email = resultado.getString(6);
             Integer tipoempleado = resultado.getInt(8);
-            //int id, String nombreUsuario, String clave, Empleado emp
             lista.add(new Empleado(cedula, nombres, apellidos, new Contact(email,telefono), salario, tipoempleado));
         }
         if(tabla.getItems().size() > 0){

@@ -24,7 +24,7 @@ public class Usuario extends Empleado {
 
     public Usuario(String nombreUsuario, String clave, Empleado emp) {
         super(emp.dni, emp.nombres, emp.apellidos, 
-                new Contact(emp.direccion, emp.correo, emp.telefono), emp.sueldo, emp.getIdLocal());
+                emp.contacto, emp.sueldo, emp.getIdLocal());
         this.nombreUsuario = nombreUsuario;
         this.clave = clave;
     }

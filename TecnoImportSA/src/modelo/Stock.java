@@ -11,18 +11,10 @@ package modelo;
  */
 public class Stock{
     private int cant;
-    private int idPrdct;
-    private String nombrePrdct;
-    private String descripcionPrdct;
-    private double precioActualPrdct;
-    private Categoria categoria;
+    private Producto producto;
 
     public Stock(Producto p, int cant){
-        this.idPrdct = p.getIdPrdct();
-        this.nombrePrdct = p.getNombrePrdct();
-        this.descripcionPrdct = p.getDescripcionPrdct();
-        this.precioActualPrdct = p.getPrecioActualPrdct();
-        this.categoria = p.getCategoria();
+        this.producto = p;
         this.cant = cant;
     }
 
@@ -34,44 +26,12 @@ public class Stock{
         this.cant = cant;
     }
 
-    public int getIdPrdct() {
-        return idPrdct;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdPrdct(int idPrdct) {
-        this.idPrdct = idPrdct;
-    }
-
-    public String getNombrePrdct() {
-        return nombrePrdct;
-    }
-
-    public void setNombrePrdct(String nombrePrdct) {
-        this.nombrePrdct = nombrePrdct;
-    }
-
-    public String getDescripcionPrdct() {
-        return descripcionPrdct;
-    }
-
-    public void setDescripcionPrdct(String descripcionPrdct) {
-        this.descripcionPrdct = descripcionPrdct;
-    }
-
-    public double getPrecioActualPrdct() {
-        return precioActualPrdct;
-    }
-
-    public void setPrecioActualPrdct(double precioActualPrdct) {
-        this.precioActualPrdct = precioActualPrdct;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
 }

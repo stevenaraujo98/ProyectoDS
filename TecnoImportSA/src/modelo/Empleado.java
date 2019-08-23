@@ -15,12 +15,12 @@ public class Empleado extends Persona {
     protected int idLocal;
     
     public Empleado(String dni, String nombres, String apellidos, Contact contact, double sueldo, int idLocal) {
-        super(dni, nombres, apellidos, contact.getDireccion(), contact.getCorreo(), contact.getTelefono());
+        super(dni, nombres, apellidos, contact);
         this.idLocal = idLocal;
     }
     
     public Empleado(String dni, String nombres, String apellidos, Contact contact, double sueldo, int idLocal, int tipoEmpleado){
-        super(dni, nombres, apellidos, contact.getDireccion(), contact.getCorreo(), contact.getTelefono());
+        super(dni, nombres, apellidos, contact);
         this.idLocal = idLocal;
     }
 
