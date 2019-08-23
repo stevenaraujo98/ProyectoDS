@@ -61,8 +61,8 @@ public abstract class Localidad {
         return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
     public Admin getAdmin(){

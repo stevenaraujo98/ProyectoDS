@@ -88,8 +88,7 @@ public class InfoEntregaView extends BorderPane{
     
     public void setActionEditar(){
         editar.setOnAction(value -> {
-            if(table.getSelectionModel().getSelectedItem() != null ){
-            }else{
+            if(table.getSelectionModel().getSelectedItem() == null ){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Error!!!");
                 alert.setTitle("Error"); 

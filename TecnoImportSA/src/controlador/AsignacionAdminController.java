@@ -31,7 +31,6 @@ import vista.AdminView;
  * @author SSAM
  */
 public class AsignacionAdminController implements Initializable {
-    private ObservableList<Empleado> lista;
     @FXML
     TableView<Empleado> tabla;
     @FXML
@@ -99,6 +98,7 @@ public class AsignacionAdminController implements Initializable {
     }
     
     public void agregarATabla(ResultSet resultado) throws SQLException{
+        ObservableList<Empleado> lista;
         lista = FXCollections.observableArrayList();
         while(resultado.next()){
             String cedula = resultado.getString(1);

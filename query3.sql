@@ -311,3 +311,7 @@ create procedure obtenerRepartidoresFiltrar(in filtro varchar(50))
         or direccion like @pattern or email like @pattern;
 	end //
 DELIMITER ;
+
+insert into Usuarios (username, userpass) values('joricast', aes_encrypt("jugador", "dksaljdskfh328dshjdh2uheiuhqdnmsbnvcad"));
+insert into Empleados (cedula,nombres,apellidos,telefono,salario,tipo_empleado,id_usuario,direccion,email)
+values("0955480454", "Jordan", "Castro", "0981528298", 4240, 2, 6, "direccion3", "joricast@espol.edu.ec");

@@ -40,7 +40,7 @@ public class VendedorView extends BaseView{
     
     private Vendedor vendedor;
     private VBox listado;
-    private static final String url = "/recursos/icons/user.png";
+    private static final String urlS = "/recursos/icons/user.png";
     
     public VendedorView(Vendedor vendedor){
         this.vendedor = vendedor;
@@ -53,11 +53,11 @@ public class VendedorView extends BaseView{
         this.setTitleHome("VENDEDOR");
         this.setSubtitleHome(vendedor.getNombreUsuario()); 
         this.getMenu().addItemView(new ItemView("Productos", 
-                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Venta",  
-                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
         this.getMenu().addItemView(new ItemView("Cotizacion",  
-                    new Image(AdminView.class.getResourceAsStream(url), 30, 30, true, true)));
+                    new Image(AdminView.class.getResourceAsStream(urlS), 30, 30, true, true)));
         this.getMenu().setOnAction(e -> {
             switch(this.getMenu().getItemSelected()){
                 case 0:
@@ -152,12 +152,12 @@ public class VendedorView extends BaseView{
                 String np = nombre.getText();
                 String descr = des.getText();
                 Categoria c = categorias.getValue();
-                int id_c = 0;
+                int idC = 0;
                 if(np.isEmpty()) np = "#&#";
                 if(descr.isEmpty()) descr = "#&#";
-                if(c != null) id_c = c.getIdCat();
+                if(c != null) idC = c.getIdCat();
                 Procedure p = new Procedure("buscarProductos").addValue(vendedor.getIdLocal())
-                        .addValue(np).addValue(descr).addValue(id_c);
+                        .addValue(np).addValue(descr).addValue(idC);
                 ResultSet rs = ConexionDB.getInstance().executeProcedureResult(p);
                 addElements(rs);
             } catch (SQLException ex) {
